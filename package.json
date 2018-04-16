@@ -2,7 +2,12 @@
   "name": "gally",
   "version": "0.0.0-development",
   "description": "",
-  "main": "index.js",
+  "main" : "./lib/index.js",
+  "preferGlobal": true,
+  "bin": {
+    "gally": "./lib/index.js",
+    "ga": "./lib/index.js"
+  },
   "scripts": {
     "test": "npm run clean && npm run gardener && npm run test-simple",
     "clean": "rm -rf lib",
