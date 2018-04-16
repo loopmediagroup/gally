@@ -10,6 +10,8 @@
 [![Gardener](https://github.com/simlu/js-gardener/blob/master/assets/badge.svg)](https://github.com/simlu/js-gardener)
 [![Gitter](https://github.com/simlu/js-gardener/blob/master/assets/icons/gitter.svg)](https://gitter.im/loopmediagroup/gally)
 
+Git-Ally - Automation around Github.com Repository Management
+
 ## Install
 
     $ npm i -g gally
