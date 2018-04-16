@@ -3,7 +3,9 @@ const open = require('./../../src/util/open');
 
 describe("Testing open.js", () => {
   it("Testing Error", (done) => {
-    expect(() => open("invalid")).to.throw("");
-    done();
+    open.url().catch((e) => {
+      expect(e.message).to.equal('Expected a `target`');
+      done();
+    });
   });
 });
