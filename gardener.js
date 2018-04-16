@@ -4,7 +4,6 @@ const gardener = require('js-gardener');
 
 if (require.main === module) {
   gardener({
-    skip: ["badges"],
     author: "Loop Media Group",
     license: "MIT"
   }).catch(() => process.exit(1));
