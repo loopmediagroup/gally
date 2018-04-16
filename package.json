@@ -8,6 +8,9 @@
     "gally": "./lib/index.js",
     "ga": "./lib/index.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "npm run clean && npm run gardener && npm run test-simple",
     "clean": "rm -rf lib",
@@ -25,9 +28,9 @@
     "babel-cli": "7.0.0-beta.3",
     "chai": "4.1.2",
     "coveralls": "3.0.0",
-    "js-gardener": "1.22.2",
+    "js-gardener": "1.22.3",
     "nyc": "11.6.0",
-    "semantic-release": "11.0.2"
+    "semantic-release": "15.1.7"
   },
   "nyc": {
     "tempDirectory": "./coverage/.nyc_output",
