@@ -8,6 +8,9 @@
     "gally": "./lib/index.js",
     "ga": "./lib/index.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "npm run clean && npm run gardener && npm run test-simple",
     "clean": "rm -rf lib",
