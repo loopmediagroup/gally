@@ -76,7 +76,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ".git"
+    "url": "https://github.com/loopmediagroup/gally.git"
   },
   "bugs": {
     "url": "https://github.com/loopmediagroup/gally/issues"
