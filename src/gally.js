@@ -40,7 +40,7 @@ module.exports.load = async (configDir, cwd) => {
 
   return {
     config: {
-      local: json.loadOrDefault(path.join(cwd, ".gally")),
+      local: json.loadOrDefault(path.join(cwd, ".gally.json"), null),
       global: globalConfig
     },
     credentials

@@ -1,4 +1,3 @@
-const fs = require('fs');
 const expect = require('chai').expect;
 const inquirer = require('inquirer');
 const tmp = require('tmp');
@@ -32,7 +31,7 @@ describe("Testing Gally", () => {
   it("Testing load", (done) => {
     const dir = tmp.dirSync({ keep: false, unsafeCleanup: true }).name;
     const config = {
-      config: { global: {}, local: {} },
+      config: { global: {}, local: null },
       credentials: { github: { username: "username", token: 'token' } }
     };
     // load (create)
