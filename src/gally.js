@@ -17,20 +17,22 @@ module.exports.load = async (configDir) => {
   const credentials = json.loadOrDefault(credentialsFile);
 
   if (get(credentials, "github.username") === undefined) {
-    set(credentials, "github.username", await inquirer.prompt([{
+    const username = (await inquirer.prompt([{
       type: 'input',
       message: 'Enter github username',
       name: 'username'
-    }]).username);
+    }])).username;
+    set(credentials, "github.username", username);
   }
 
   if (get(credentials, "github.token") === undefined) {
-    set(credentials, "github.token", await inquirer.prompt([{
+    const token = (await inquirer.prompt([{
       type: 'password',
       message: 'Enter github personal access token',
       name: 'token',
       mask: '*'
-    }]).token);
+    }])).token;
+    set(credentials, "github.token", token);
   }
 
   json.write(configFile, config);
