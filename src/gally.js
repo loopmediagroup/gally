@@ -1,5 +1,7 @@
 const fs = require('fs');
 const path = require('path');
+const get = require("lodash.get");
+const set = require("lodash.set");
 const inquirer = require('inquirer');
 const json = require("./util/json");
 
@@ -14,13 +16,21 @@ module.exports.load = async (configDir) => {
   const config = json.loadOrDefault(configFile);
   const credentials = json.loadOrDefault(credentialsFile);
 
-  if (credentials.bearer === undefined) {
-    credentials.bearer = (await inquirer.prompt([{
+  if (get(credentials, "github.username") === undefined) {
+    set(credentials, "github.username", await inquirer.prompt([{
+      type: 'input',
+      message: 'Enter github username',
+      name: 'username'
+    }]).username)
+  }
+
+  if (get(credentials, "github.token") === undefined) {
+    set(credentials, "github.token", await inquirer.prompt([{
       type: 'password',
       message: 'Enter github personal access token',
-      name: 'bearer',
+      name: 'token',
       mask: '*'
-    }])).bearer;
+    }]).token);
   }
 
   json.write(configFile, config);
