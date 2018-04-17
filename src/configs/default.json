@@ -1,22 +1,28 @@
 {
   "branches": [{
     "dev": {
-      "protection": "full"
+      "protection": "full",
+      "create": true
     },
     "stage": {
-      "protection": "full"
+      "protection": "full",
+      "create": true
     },
     "master": {
-      "protection": "full"
+      "protection": "full",
+      "create": true
     },
     "fix/*": {
-      "protection": null
+      "protection": null,
+      "create": false
     },
     "feat/*": {
-      "protection": null
+      "protection": null,
+      "create": false
     },
     "greenkeeper/*": {
-      "protection": null
+      "protection": null,
+      "create": false
     }
   }],
   "status-checks": {
