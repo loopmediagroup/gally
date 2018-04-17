@@ -12,7 +12,7 @@ describe("Testing `init`", () => {
     const cwd = process.cwd();
     process.chdir(dir);
     init.handler({}).then(() => {
-      expect(fs.existsSync(path.join(dir, ",gally.json"))).to.equal(true);
+      expect(fs.existsSync(path.join(dir, ".gally.json"))).to.equal(true);
       process.chdir(cwd);
       done();
     });
