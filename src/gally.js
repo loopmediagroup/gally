@@ -21,7 +21,7 @@ module.exports.load = async (configDir) => {
       type: 'input',
       message: 'Enter github username',
       name: 'username'
-    }]).username)
+    }]).username);
   }
 
   if (get(credentials, "github.token") === undefined) {
