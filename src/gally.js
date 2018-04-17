@@ -5,15 +5,15 @@ const set = require("lodash.set");
 const inquirer = require('inquirer');
 const json = require("./util/json");
 
-module.exports.load = async (configDir) => {
+module.exports.load = async (configDir, cwd) => {
   if (!fs.existsSync(configDir)) {
     fs.mkdirSync(configDir);
   }
 
-  const configFile = path.join(configDir, "config");
+  const globalConfigFile = path.join(configDir, "config");
   const credentialsFile = path.join(configDir, "credentials");
 
-  const config = json.loadOrDefault(configFile);
+  const globalConfig = json.loadOrDefault(globalConfigFile);
   const credentials = json.loadOrDefault(credentialsFile);
 
   if (get(credentials, "github.username") === undefined) {
@@ -35,11 +35,14 @@ module.exports.load = async (configDir) => {
     set(credentials, "github.token", token);
   }
 
-  json.write(configFile, config);
+  json.write(globalConfigFile, globalConfig);
   json.write(credentialsFile, credentials);
 
   return {
-    config,
+    config: {
+      local: json.loadOrDefault(path.join(cwd, ".gally")),
+      global: globalConfig
+    },
     credentials
   };
 };

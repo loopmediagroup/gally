@@ -1,3 +1,4 @@
+const fs = require('fs');
 const expect = require('chai').expect;
 const inquirer = require('inquirer');
 const tmp = require('tmp');
@@ -29,15 +30,17 @@ describe("Testing Gally", () => {
   });
 
   it("Testing load", (done) => {
-    const dir = `${tmp.dirSync({ keep: false, unsafeCleanup: true }).name}/.gally`;
-    const config = { config: {}, credentials: { github: { username: "username", token: 'token' } } };
+    const dir = tmp.dirSync({ keep: false, unsafeCleanup: true }).name;
+    const config = {
+      config: { global: {}, local: {} },
+      credentials: { github: { username: "username", token: 'token' } }
+    };
     // load (create)
-    gally.load(dir).then((cfg1) => {
-      console.log(cfg1);
+    gally.load(`${dir}/$HOME.gally`, dir).then((cfg1) => {
       expect(cfg1).to.deep.equal(config);
       expect(promptCount).to.equal(2);
       // load (existing)
-      gally.load(dir).then((cfg2) => {
+      gally.load(`${dir}/$HOME.gally`, dir).then((cfg2) => {
         expect(cfg2).to.deep.equal(config);
         expect(promptCount).to.equal(2);
         done();
