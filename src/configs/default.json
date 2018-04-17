@@ -1,0 +1,43 @@
+{
+  "branches": [{
+    "dev": {
+      "protection": "full"
+    },
+    "stage": {
+      "protection": "full"
+    },
+    "master": {
+      "protection": "full"
+    },
+    "fix/*": {
+      "protection": null
+    },
+    "feat/*": {
+      "protection": null
+    },
+    "greenkeeper/*": {
+      "protection": null
+    }
+  }],
+  "status-checks": {
+    "exclusions": []
+  },
+  "protection": {
+    "full": {
+      "required_status_checks": {
+        "strict": true,
+        "contexts": "$STATUS_CHECK_LIST"
+      },
+      "enforce_admins": true,
+      "required_pull_request_reviews": {
+        "dismiss_stale_reviews": true,
+        "require_code_owner_reviews": false
+      },
+      "restrictions": {
+        "users": [
+          "???"
+        ]
+      }
+    }
+  }
+}
