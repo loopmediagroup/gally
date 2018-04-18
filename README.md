@@ -26,4 +26,4 @@ Create PR from `origin/CURRNET_BRANCH` to remote `upstream/TARGET_BRANCH` with
 
     $ ga pr [branch]
 
-where `branch` is the target branch (defaults to develop).
+where `branch` is the target branch (defaults to dev).

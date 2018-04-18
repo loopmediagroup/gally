@@ -10,20 +10,12 @@
     },
     "master": {
       "protection": "full",
-      "create": true
+      "create": true,
+      "default": true
     },
-    "fix/*": {
-      "protection": null,
-      "create": false
-    },
-    "feat/*": {
-      "protection": null,
-      "create": false
-    },
-    "greenkeeper/*": {
-      "protection": null,
-      "create": false
-    }
+    "fix/*": {},
+    "feat/*": {},
+    "greenkeeper/*": {}
   },
   "status-checks": {
     "exclusions": []
@@ -41,7 +33,7 @@
       },
       "restrictions": {
         "users": [
-          "???"
+          "simlu"
         ]
       }
     }

@@ -15,7 +15,7 @@ const getRemoteOrBestGuess = async (remote, exclude) => {
 };
 module.exports.getRemoteOrBestGuess = getRemoteOrBestGuess;
 
-module.exports.ghPrUrl = async (branch = "develop") => {
+module.exports.ghPrUrl = async (branch = "dev") => {
   const upstream = await getRemoteUrl(await getRemoteOrBestGuess("upstream", "origin"));
   const origin = await getRemoteUrl(await getRemoteOrBestGuess("origin", "upstream"));
 
