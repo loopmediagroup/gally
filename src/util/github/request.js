@@ -12,7 +12,8 @@ const ghRequest = async (method, uri, token, body, cached) => {
       uri,
       headers: {
         Authorization: `bearer ${token}`,
-        "User-Agent": "Gally: https://github.com/loopmediagroup/gally"
+        "User-Agent": "Gally: https://github.com/loopmediagroup/gally",
+        Accept: "application/vnd.github.luke-cage-preview+json"
       },
       resolveWithFullResponse: true,
       simple: false,
