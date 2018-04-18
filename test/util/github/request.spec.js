@@ -17,14 +17,14 @@ describe("Testing request", () => {
         "https://api.github.com/repos/loopmediagroup/gally",
         "--secret-token--",
         { cached: true }
-      ).then(r => {
-        expect(r.statusCode).to.equal(200);
+      ).then((resp) => {
+        expect(resp.statusCode).to.equal(200);
         request.get(
           "https://api.github.com/repos/loopmediagroup/gally",
           "--secret-token--",
           { cached: true }
-        ).then(r => {
-          expect(r.statusCode).to.equal(200);
+        ).then((respCached) => {
+          expect(respCached.statusCode).to.equal(200);
           nockDone();
           done();
         });

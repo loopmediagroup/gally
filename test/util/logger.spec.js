@@ -6,11 +6,14 @@ describe("Testing logger.js", () => {
   const logs = [];
 
   before(() => {
+    // eslint-disable-next-line no-console
     consoleWarn = console.warn;
+    // eslint-disable-next-line no-console
     console.warn = input => logs.push(input);
   });
 
   after(() => {
+    // eslint-disable-next-line no-console
     console.warn = consoleWarn;
   });
 

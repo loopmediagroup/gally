@@ -1,22 +1,29 @@
 const request = require("./../github/request");
 
-module.exports.create = async (repoKey, branch, token) => {
+const getDefaultBranch = async (repoKey, token) => {
   const repoInfo = await request.get(
     `https://api.github.com/repos/${repoKey}`,
     token,
     { cached: true }
   );
+  return repoInfo.body.default_branch;
+};
+module.exports.getDefaultBranch = getDefaultBranch;
+
+const create = async (repoKey, branch, token) => {
+  const defaultBranch = await getDefaultBranch(repoKey, token);
   const head = await request.get(
-    `https://api.github.com/repos/${repoKey}/git/refs/heads/${repoInfo.body.default_branch}`,
+    `https://api.github.com/repos/${repoKey}/git/refs/heads/${defaultBranch}`,
     token,
     { cached: true }
   );
   // noinspection JSDeprecatedSymbols
   const sha = head.body.object.sha;
-
-  return (await request.post(
+  const result = await request.post(
     `https://api.github.com/repos/${repoKey}/git/refs`,
     token,
-    { body: { "ref": `refs/heads/${branch}`, "sha": sha } }
-  )).statusCode === 201;
+    { body: { ref: `refs/heads/${branch}`, sha } }
+  );
+  return result.statusCode === 201;
 };
+module.exports.create = create;

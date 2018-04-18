@@ -10,6 +10,6 @@ const evaluate = (configBranches, remoteBranches) => {
       !partialLocalBranches.some(lb => rb.startsWith(lb))
     )),
     missing: nonPartialBranches.filter(b => remoteBranches.indexOf(b) === -1)
-  }
+  };
 };
 module.exports.evaluate = evaluate;

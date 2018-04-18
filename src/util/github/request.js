@@ -23,6 +23,6 @@ const ghRequest = async (method, uri, token, body, cached) => {
   return cache[md5];
 };
 
-module.exports = ["get", "post", "delete", "put"].reduce((prev, cur) => Object.assign(prev, {
-  [cur]: (uri, token, {body = undefined, cached = false} = {}) => ghRequest(cur, uri, token, body, cached)
+module.exports = ["get", "post", "delete", "put", "patch"].reduce((prev, cur) => Object.assign(prev, {
+  [cur]: (uri, token, { body = undefined, cached = false } = {}) => ghRequest(cur, uri, token, body, cached)
 }), {});

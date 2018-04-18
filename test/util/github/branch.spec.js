@@ -13,7 +13,7 @@ describe("Testing branch", () => {
   it("Testing create", function (done) {
     this.timeout(60000);
     nockBack(`branch-create.json`, {}, (nockDone) => {
-      branch.create("loopmediagroup/gally", "dev", "--secret-token--").then(r => {
+      branch.create("loopmediagroup/gally", "dev", "--secret-token--").then((r) => {
         expect(r).to.equal(true);
         nockDone();
         done();
