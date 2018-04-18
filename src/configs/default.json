@@ -1,4 +1,5 @@
 {
+  "defaultBranch": "master",
   "branches": {
     "dev": {
       "protection": "full",
@@ -10,8 +11,7 @@
     },
     "master": {
       "protection": "full",
-      "create": true,
-      "default": true
+      "create": true
     },
     "fix/*": {},
     "feat/*": {},
