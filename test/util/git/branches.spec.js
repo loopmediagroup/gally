@@ -7,26 +7,26 @@ const check = (configBranches, remoteBranches, expected) => {
 
 describe("Testing branches", () => {
   it("Testing evaluate: Matching", () => {
-    check(["master"], ["master"], { unexpected: [], missing: [] });
+    check(["master"], ["master"], { unexpected: [], missing: [], matched: ["master"] });
   });
 
   it("Testing evaluate: Matching with Star", () => {
-    check(["prefix/*"], ["prefix/other"], { unexpected: [], missing: [] });
+    check(["prefix/*"], ["prefix/other"], { unexpected: [], missing: [], matched: [] });
   });
 
   it("Testing evaluate: Unexpected", () => {
-    check(["master"], ["custom"], { unexpected: ["custom"], missing: ["master"] });
+    check(["master"], ["custom"], { unexpected: ["custom"], missing: ["master"], matched: [] });
   });
 
   it("Testing evaluate: Unexpected with Star", () => {
-    check(["feat/*"], ["custom"], { unexpected: ["custom"], missing: [] });
+    check(["feat/*"], ["custom"], { unexpected: ["custom"], missing: [], matched: [] });
   });
 
   it("Testing evaluate: Missing", () => {
-    check(["master"], [], { unexpected: [], missing: ["master"] });
+    check(["master"], [], { unexpected: [], missing: ["master"], matched: [] });
   });
 
   it("Testing evaluate: Missing with Star (not returned)", () => {
-    check(["feat/*"], [], { unexpected: [], missing: [] });
+    check(["feat/*"], [], { unexpected: [], missing: [], matched: [] });
   });
 });

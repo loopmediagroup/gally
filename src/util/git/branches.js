@@ -3,13 +3,12 @@ const evaluate = (configBranches, remoteBranches) => {
   const partialLocalBranches = configBranches
     .filter(lb => lb.endsWith("*"))
     .map(lb => lb.slice(0, -1));
-  const invalidBranches = remoteBranches.filter(rb => (
-    configBranches.indexOf(rb) === -1 &&
-    !partialLocalBranches.some(lb => rb.startsWith(lb))
-  ));
-
   return {
-    unexpected: invalidBranches,
+    matched: remoteBranches.filter(rb => configBranches.indexOf(rb) !== -1),
+    unexpected: remoteBranches.filter(rb => (
+      configBranches.indexOf(rb) === -1 &&
+      !partialLocalBranches.some(lb => rb.startsWith(lb))
+    )),
     missing: nonPartialBranches.filter(b => remoteBranches.indexOf(b) === -1)
   }
 };
