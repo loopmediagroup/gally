@@ -1,5 +1,15 @@
 const request = require("./../github/request");
 
+const list = async (repoKey, token) => {
+  const result = await request.get(
+    `https://api.github.com/repos/${repoKey}/branches`,
+    token,
+    { cached: true }
+  );
+  return result.body.map(e => e.name);
+};
+module.exports.list = list;
+
 const getDefaultBranch = async (repoKey, token) => {
   const repoInfo = await request.get(
     `https://api.github.com/repos/${repoKey}`,
