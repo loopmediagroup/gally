@@ -1,5 +1,5 @@
 {
-  "branches": [{
+  "branches": {
     "dev": {
       "protection": "full",
       "create": true
@@ -24,7 +24,7 @@
       "protection": null,
       "create": false
     }
-  }],
+  },
   "status-checks": {
     "exclusions": []
   },
