@@ -1,0 +1,10 @@
+[
+    {
+        "scope": "https://api.github.com:443",
+        "method": "DELETE",
+        "path": "/repos/loopmediagroup/gally/branches/custom/protection",
+        "body": "",
+        "status": 204,
+        "response": ""
+    }
+]

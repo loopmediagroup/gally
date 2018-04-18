@@ -13,7 +13,50 @@ describe("Testing branch", () => {
   it("Testing create", function (done) {
     this.timeout(60000);
     nockBack(`branch-create.json`, {}, (nockDone) => {
-      branch.create("loopmediagroup/gally", "dev", "--secret-token--").then((r) => {
+      branch.create("dev", "loopmediagroup/gally", "--secret-token--").then((r) => {
+        expect(r).to.equal(true);
+        nockDone();
+        done();
+      });
+    });
+  });
+
+  // eslint-disable-next-line func-names
+  it("Testing updateProtection (create)", function (done) {
+    this.timeout(60000);
+    nockBack(`branch-updateProtection-create.json`, {}, (nockDone) => {
+      branch.updateProtection("custom", {
+        required_status_checks: {
+          strict: true,
+          contexts: []
+        },
+        enforce_admins: true,
+        required_pull_request_reviews: {
+          dismissal_restrictions: {
+            users: [],
+            teams: []
+          },
+          dismiss_stale_reviews: true,
+          require_code_owner_reviews: true,
+          required_approving_review_count: 1
+        },
+        restrictions: {
+          users: [],
+          teams: []
+        }
+      }, "loopmediagroup/gally", "--secret-token--").then((r) => {
+        expect(r).to.equal(true);
+        nockDone();
+        done();
+      });
+    });
+  });
+
+  // eslint-disable-next-line func-names
+  it("Testing updateProtection (delete)", function (done) {
+    this.timeout(60000);
+    nockBack(`branch-updateProtection-delete.json`, {}, (nockDone) => {
+      branch.updateProtection("custom", null, "loopmediagroup/gally", "--secret-token--").then((r) => {
         expect(r).to.equal(true);
         nockDone();
         done();

@@ -10,6 +10,23 @@ const list = async (repoKey, token) => {
 };
 module.exports.list = list;
 
+const updateProtection = async (branch, protection, repoKey, token) => {
+  if (protection === null) {
+    const result = await request.delete(
+      `https://api.github.com/repos/${repoKey}/branches/${branch}/protection`,
+      token
+    );
+    return [204, 404].indexOf(result.statusCode) !== -1;
+  }
+  const result = await request.put(
+    `https://api.github.com/repos/${repoKey}/branches/${branch}/protection`,
+    token,
+    { body: protection }
+  );
+  return result.statusCode === 200;
+};
+module.exports.updateProtection = updateProtection;
+
 const getDefaultBranch = async (repoKey, token) => {
   const repoInfo = await request.get(
     `https://api.github.com/repos/${repoKey}`,
@@ -20,7 +37,7 @@ const getDefaultBranch = async (repoKey, token) => {
 };
 module.exports.getDefaultBranch = getDefaultBranch;
 
-const create = async (repoKey, branch, token) => {
+const create = async (branch, repoKey, token) => {
   const defaultBranch = await getDefaultBranch(repoKey, token);
   const head = await request.get(
     `https://api.github.com/repos/${repoKey}/git/refs/heads/${defaultBranch}`,
