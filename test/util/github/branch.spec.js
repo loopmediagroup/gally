@@ -20,4 +20,16 @@ describe("Testing branch", () => {
       });
     });
   });
+
+  // eslint-disable-next-line func-names
+  it("Testing list", function (done) {
+    this.timeout(60000);
+    nockBack(`branch-list.json`, {}, (nockDone) => {
+      branch.list("loopmediagroup/gally", "--secret-token--").then((r) => {
+        expect(r).to.deep.equal(['dev', 'stage', 'master']);
+        nockDone();
+        done();
+      });
+    });
+  });
 });
