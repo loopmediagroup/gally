@@ -1,0 +1,10 @@
+[
+    {
+        "scope": "https://api.github.com:443",
+        "method": "GET",
+        "path": "/repos/loopmediagroup/gally",
+        "body": "",
+        "status": 200,
+        "response": {}
+    }
+]

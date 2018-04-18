@@ -4,12 +4,12 @@ module.exports.create = async (repoKey, branch, token) => {
   const repoInfo = await request.get(
     `https://api.github.com/repos/${repoKey}`,
     token,
-    { cache: true }
+    { cached: true }
   );
   const head = await request.get(
     `https://api.github.com/repos/${repoKey}/git/refs/heads/${repoInfo.body.default_branch}`,
     token,
-    { cache: true }
+    { cached: true }
   );
   // noinspection JSDeprecatedSymbols
   const sha = head.body.object.sha;

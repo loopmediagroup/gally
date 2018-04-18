@@ -3,7 +3,7 @@ const expect = require('chai').expect;
 const branch = require("./../../../src/util/github/branch");
 const nockBack = require('nock').back;
 
-describe("Testing branch", (done) => {
+describe("Testing branch", () => {
   before(() => {
     nockBack.setMode('record');
     nockBack.fixtures = path.join(__dirname, "__cassette");
