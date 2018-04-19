@@ -1,0 +1,20 @@
+[
+    {
+        "scope": "https://api.github.com:443",
+        "method": "GET",
+        "path": "/repos/loopmediagroup/gally/branches",
+        "body": "",
+        "status": 200,
+        "response": [
+            {
+                "name": "dev"
+            },
+            {
+                "name": "stage"
+            },
+            {
+              "name": "master"
+            }
+        ]
+    }
+]

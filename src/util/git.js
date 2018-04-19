@@ -1,5 +1,8 @@
 const shell = require("./shell");
 
+const getRemoteUrl = remote => shell.run(`git config --get remote.${remote}.url`);
+module.exports.getRemoteUrl = getRemoteUrl;
+
 const getRemoteOrBestGuess = async (remote, exclude) => {
   let remotes = (await shell.run("git remote")).split("\n").map(e => e.trim()).filter(e => e.length !== 0);
   if (remotes.length === 0) {
@@ -12,9 +15,9 @@ const getRemoteOrBestGuess = async (remote, exclude) => {
 };
 module.exports.getRemoteOrBestGuess = getRemoteOrBestGuess;
 
-module.exports.ghPrUrl = async (branch = "develop") => {
-  const upstream = await shell.run(`git config --get remote.${await getRemoteOrBestGuess("upstream", "origin")}.url`);
-  const origin = await shell.run(`git config --get remote.${await getRemoteOrBestGuess("origin", "upstream")}.url`);
+module.exports.ghPrUrl = async (branch = "dev") => {
+  const upstream = await getRemoteUrl(await getRemoteOrBestGuess("upstream", "origin"));
+  const origin = await getRemoteUrl(await getRemoteOrBestGuess("origin", "upstream"));
 
   const sourceBranch = await shell.run("git branch");
 

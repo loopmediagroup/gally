@@ -1,0 +1,43 @@
+{
+  "defaultBranch": "master",
+  "branches": {
+    "dev": {
+      "protection": "$full",
+      "create": true
+    },
+    "stage": {
+      "protection": "$full",
+      "create": true
+    },
+    "master": {
+      "protection": "$full",
+      "create": true
+    },
+    "fix/*": {},
+    "feat/*": {},
+    "greenkeeper/*": {}
+  },
+  "protection": {
+    "$full": {
+      "required_status_checks": {
+        "strict": true,
+        "contexts": [
+          "continuous-integration/circle-ci",
+          "continuous-integration/travis-ci",
+          "coverage/coveralls",
+          "greenkeeper/verify"
+        ]
+      },
+      "enforce_admins": true,
+      "required_pull_request_reviews": {
+        "dismiss_stale_reviews": true,
+        "require_code_owner_reviews": false
+      },
+      "restrictions": {
+        "users": [
+          "???"
+        ]
+      }
+    }
+  }
+}

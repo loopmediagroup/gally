@@ -20,20 +20,20 @@ describe("Testing git.js", () => {
       "git remote": "origin\nupstream\n",
       "git config --get remote.upstream.url": "https://github.com/loopmediagroup/gally.git",
       "git config --get remote.origin.url": "https://github.com/simlu/gally.git",
-      "git branch": "develop"
+      "git branch": "dev"
     };
   });
 
   it("Testing ghPrUrl Default", (done) => {
     git.ghPrUrl().then((r) => {
-      expect(r).to.equal("https://github.com/loopmediagroup/gally/compare/develop...simlu:develop?expand=1");
+      expect(r).to.equal("https://github.com/loopmediagroup/gally/compare/dev...simlu:dev?expand=1");
       done();
     });
   });
 
   it("Testing ghPrUrl Custom Target", (done) => {
     git.ghPrUrl("custom").then((r) => {
-      expect(r).to.equal("https://github.com/loopmediagroup/gally/compare/custom...simlu:develop?expand=1");
+      expect(r).to.equal("https://github.com/loopmediagroup/gally/compare/custom...simlu:dev?expand=1");
       done();
     });
   });
