@@ -60,7 +60,7 @@ const evaluate = async (config, remote) => {
   if (result.every(e => e === true)) {
     logger.info(chalk.green("ok"));
   } else {
-    logger.info(chalk.red("failure"));
+    throw new Error("Failed to sync Branch!");
   }
   return {};
 };

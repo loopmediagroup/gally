@@ -19,7 +19,7 @@ const configTemplate = {
         }
       },
       protection: {
-        "$full": {}
+        $full: {}
       }
     }
   },
@@ -84,6 +84,18 @@ describe("Testing github", () => {
     nockBack(`github-evaluate-create-failure.json`, {}, (nockDone) => {
       github.evaluate(configTemplate, "upstream").catch((e) => {
         expect(e.message).to.deep.equal("Failed to create Branch!");
+        nockDone();
+        done();
+      });
+    });
+  });
+
+  // eslint-disable-next-line func-names
+  it("Testing evaluate (sync failure)", function (done) {
+    this.timeout(60000);
+    nockBack(`github-evaluate-sync-failure.json`, {}, (nockDone) => {
+      github.evaluate(configTemplate, "upstream").catch((e) => {
+        expect(e.message).to.deep.equal("Failed to sync Branch!");
         nockDone();
         done();
       });

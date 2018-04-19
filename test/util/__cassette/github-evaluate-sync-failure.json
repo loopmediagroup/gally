@@ -29,7 +29,7 @@
         "method": "PUT",
         "path": "/repos/loopmediagroup/gally/branches/master/protection",
         "body": {},
-        "status": 200
+        "status": 400
     },
     {
         "scope": "https://api.github.com:443",
