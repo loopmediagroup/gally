@@ -20,4 +20,19 @@ describe("Testing github", () => {
       });
     });
   });
+
+  // eslint-disable-next-line func-names
+  it("Testing evaluate (incorrect default-branch)", function (done) {
+    this.timeout(60000);
+    nockBack(`github-evaluate-incorrect-default-branch.json`, {}, (nockDone) => {
+      github.evaluate({
+        config: { local: { defaultBranch: "custom" } },
+        credentials: { github: { token: "--secret-token--" } }
+      }, "upstream").catch(e => {
+        expect(e.message).to.equal('Incorrect default branch configured!');
+        nockDone();
+        done();
+      });
+    });
+  });
 });

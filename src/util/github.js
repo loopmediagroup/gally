@@ -16,7 +16,7 @@ const evaluate = async (config, remote) => {
   // check default branch
   const defaultBranch = await githubBranch.getDefaultBranch(repoKey, config.credentials.github.token);
   if (get(config, "config.local.defaultBranch", "master") !== defaultBranch) {
-    logger.error(chalk.red("Incorrect default branch configured!"));
+    throw new Error("Incorrect default branch configured!");
   }
 
   // obtain branches and do basic checking
@@ -24,7 +24,7 @@ const evaluate = async (config, remote) => {
   const configBranches = Object.keys(get(config, "config.local.branches", {}));
   const branchInfo = gitBranch.evaluate(configBranches, remoteBranches);
   if (branchInfo.unexpected.length !== 0) {
-    logger.error(chalk.red("Unexpected Branches: ") + branchInfo.unexpected.join(", "));
+    throw new Error("Unexpected Branches: ") + branchInfo.unexpected.join(", ");
   }
 
   // handle missing branches
