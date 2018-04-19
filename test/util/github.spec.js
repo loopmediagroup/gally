@@ -1,10 +1,11 @@
 const path = require("path");
 const set = require("lodash.set");
 const expect = require('chai').expect;
+const nockBack = require('nock').back;
+const shell = require("./../../src/util/shell");
 const logger = require("./../../src/util/logger");
 const request = require("./../../src/util/github/request");
 const github = require("./../../src/util/github");
-const nockBack = require('nock').back;
 
 const configTemplate = {
   config: {
@@ -31,21 +32,32 @@ const configTemplate = {
 describe("Testing github", () => {
   const logs = [];
   let loggerInfo;
+  let lookup = {};
+  let shellRun;
 
   before(() => {
     loggerInfo = logger.info;
     logger.info = input => logs.push(input);
+    shellRun = shell.run;
+    shell.run = input => (lookup[input]);
     nockBack.setMode('record');
     nockBack.fixtures = path.join(__dirname, "__cassette");
   });
 
   after(() => {
     logger.info = loggerInfo;
+    shell.run = shellRun;
   });
 
   beforeEach(() => {
     request.flushCache();
     logs.length = 0;
+    lookup = {
+      "git remote": "origin\nupstream\n",
+      "git config --get remote.upstream.url": "https://github.com/loopmediagroup/gally.git",
+      "git config --get remote.origin.url": "https://github.com/simlu/gally.git",
+      "git branch": "dev"
+    };
   });
 
   // eslint-disable-next-line func-names
