@@ -1,5 +1,6 @@
 const path = require("path");
 const set = require("lodash.set");
+const chalk = require("chalk");
 const expect = require('chai').expect;
 const nockBack = require('nock').back;
 const shell = require("./../../src/util/shell");
@@ -110,7 +111,7 @@ describe("Testing github", () => {
     this.timeout(60000);
     nockBack(`github-evaluate-create-failure.json`, {}, (nockDone) => {
       github.evaluate(configTemplate, "upstream").catch((e) => {
-        expect(logs).to.deep.equal(["Creating Branches: \u001b[32mdev\u001b[39m"]);
+        expect(logs).to.deep.equal([`Creating Branches: ${chalk.green("dev")}`]);
         expect(e.message).to.deep.equal("Failed to create Branch!");
         nockDone();
         done();
@@ -124,7 +125,7 @@ describe("Testing github", () => {
     nockBack(`github-evaluate-sync-failure.json`, {}, (nockDone) => {
       github.evaluate(configTemplate, "upstream").catch((e) => {
         expect(logs).to.deep.equal([
-          "Synchronizing Branches: master [\u001b[32mprotected\u001b[39m], dev [\u001b[32mprotected\u001b[39m]"
+          `Synchronizing Branches: master [${chalk.green("protected")}], dev [${chalk.green("protected")}]`
         ]);
         expect(e.message).to.deep.equal("Failed to sync Branch!");
         nockDone();
@@ -139,10 +140,10 @@ describe("Testing github", () => {
     nockBack(`github-evaluate-create-and-sync.json`, {}, (nockDone) => {
       github.evaluate(configTemplate, "upstream").then((r) => {
         expect(logs).to.deep.equal([
-          'Creating Branches: \u001b[32mdev\u001b[39m',
-          '\u001b[32mok\u001b[39m',
-          'Synchronizing Branches: master [\u001b[32mprotected\u001b[39m], dev [\u001b[32mprotected\u001b[39m]',
-          '\u001b[32mok\u001b[39m'
+          `Creating Branches: ${chalk.green("dev")}`,
+          chalk.green("ok"),
+          `Synchronizing Branches: master [${chalk.green("protected")}], dev [${chalk.green("protected")}]`,
+          chalk.green("ok")
         ]);
         expect(r).to.deep.equal({});
         nockDone();
@@ -157,8 +158,8 @@ describe("Testing github", () => {
     nockBack(`github-evaluate-sync-only.json`, {}, (nockDone) => {
       github.evaluate(configTemplate, "upstream").then((r) => {
         expect(logs).to.deep.equal([
-          'Synchronizing Branches: master [\u001b[32mprotected\u001b[39m], dev [\u001b[32mprotected\u001b[39m]',
-          '\u001b[32mok\u001b[39m'
+          `Synchronizing Branches: master [${chalk.green("protected")}], dev [${chalk.green("protected")}]`,
+          chalk.green("ok")
         ]);
         expect(r).to.deep.equal({});
         nockDone();
@@ -175,8 +176,8 @@ describe("Testing github", () => {
     nockBack(`github-evaluate-sync-only-unprotected.json`, {}, (nockDone) => {
       github.evaluate(config, "upstream").then((r) => {
         expect(logs).to.deep.equal([
-          'Synchronizing Branches: master [\u001b[32mprotected\u001b[39m], dev [\u001b[31munprotected\u001b[39m]',
-          '\u001b[32mok\u001b[39m'
+          `Synchronizing Branches: master [${chalk.green("protected")}], dev [${chalk.red("unprotected")}]`,
+          chalk.green("ok")
         ]);
         expect(r).to.deep.equal({});
         nockDone();
