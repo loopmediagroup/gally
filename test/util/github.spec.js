@@ -4,6 +4,28 @@ const request = require("./../../src/util/github/request");
 const github = require("./../../src/util/github");
 const nockBack = require('nock').back;
 
+const configTemplate = {
+  config: {
+    local: {
+      defaultBranch: "master",
+      branches: {
+        dev: {
+          protection: "$full",
+          create: true
+        },
+        master: {
+          protection: "$full",
+          create: true
+        }
+      },
+      protection: {
+        "$full": {}
+      }
+    }
+  },
+  credentials: { github: { token: "--secret-token--" } }
+};
+
 describe("Testing github", () => {
   before(() => {
     nockBack.setMode('record');
@@ -60,27 +82,7 @@ describe("Testing github", () => {
   it("Testing evaluate (create failure)", function (done) {
     this.timeout(60000);
     nockBack(`github-evaluate-create-failure.json`, {}, (nockDone) => {
-      github.evaluate({
-        config: {
-          local: {
-            defaultBranch: "master",
-            branches: {
-              dev: {
-                protection: "$full",
-                create: true
-              },
-              master: {
-                protection: "$full",
-                create: true
-              }
-            },
-            protection: {
-              "$full": {}
-            }
-          }
-        },
-        credentials: { github: { token: "--secret-token--" } }
-      }, "upstream").catch((e) => {
+      github.evaluate(configTemplate, "upstream").catch((e) => {
         expect(e.message).to.deep.equal("Failed to create Branch!");
         nockDone();
         done();
@@ -92,27 +94,7 @@ describe("Testing github", () => {
   it("Testing evaluate (create and sync)", function (done) {
     this.timeout(60000);
     nockBack(`github-evaluate-create-and-sync.json`, {}, (nockDone) => {
-      github.evaluate({
-        config: {
-          local: {
-            defaultBranch: "master",
-            branches: {
-              dev: {
-                protection: "$full",
-                create: true
-              },
-              master: {
-                protection: "$full",
-                create: true
-              }
-            },
-            protection: {
-              "$full": {}
-            }
-          }
-        },
-        credentials: { github: { token: "--secret-token--" } }
-      }, "upstream").then((r) => {
+      github.evaluate(configTemplate, "upstream").then((r) => {
         expect(r).to.deep.equal({});
         nockDone();
         done();
@@ -124,23 +106,7 @@ describe("Testing github", () => {
   it("Testing evaluate (sync only)", function (done) {
     this.timeout(60000);
     nockBack(`github-evaluate-sync-only.json`, {}, (nockDone) => {
-      github.evaluate({
-        config: {
-          local: {
-            defaultBranch: "master",
-            branches: {
-              master: {
-                protection: "$full",
-                create: true
-              }
-            },
-            protection: {
-              "$full": {}
-            }
-          }
-        },
-        credentials: { github: { token: "--secret-token--" } }
-      }, "upstream").then((r) => {
+      github.evaluate(configTemplate, "upstream").then((r) => {
         expect(r).to.deep.equal({});
         nockDone();
         done();

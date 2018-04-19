@@ -18,25 +18,23 @@
         "response": [
             {
                 "name": "master"
+            },
+            {
+              "name": "dev"
             }
         ]
     },
     {
         "scope": "https://api.github.com:443",
-        "method": "GET",
-        "path": "/repos/loopmediagroup/gally/git/refs/heads/master",
-        "body": "",
-        "status": 200,
-        "response": {
-            "object": {
-                "sha": "--sha--"
-            }
-        }
+        "method": "PUT",
+        "path": "/repos/loopmediagroup/gally/branches/master/protection",
+        "body": {},
+        "status": 200
     },
     {
         "scope": "https://api.github.com:443",
         "method": "PUT",
-        "path": "/repos/loopmediagroup/gally/branches/master/protection",
+        "path": "/repos/loopmediagroup/gally/branches/dev/protection",
         "body": {},
         "status": 200
     }
