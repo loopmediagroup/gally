@@ -39,7 +39,7 @@ const evaluate = async (config, remote) => {
       branchInfo.matched.push(...toCreate);
       toCreate.forEach(b => branchInfo.missing.splice(branchInfo.missing.indexOf(b), 1));
     } else {
-      logger.info(chalk.red("failure"));
+      throw new Error("Failed to create Branch!");
     }
   }
 

@@ -1,0 +1,46 @@
+[
+    {
+        "scope": "https://api.github.com:443",
+        "method": "GET",
+        "path": "/repos/loopmediagroup/gally",
+        "body": "",
+        "status": 200,
+        "response": {
+            "default_branch": "master"
+        }
+    },
+    {
+        "scope": "https://api.github.com:443",
+        "method": "GET",
+        "path": "/repos/loopmediagroup/gally/branches",
+        "body": "",
+        "status": 200,
+        "response": [
+            {
+                "name": "master"
+            }
+        ]
+    },
+    {
+        "scope": "https://api.github.com:443",
+        "method": "GET",
+        "path": "/repos/loopmediagroup/gally/git/refs/heads/master",
+        "body": "",
+        "status": 200,
+        "response": {
+            "object": {
+                "sha": "--sha--"
+            }
+        }
+    },
+    {
+        "scope": "https://api.github.com:443",
+        "method": "POST",
+        "path": "/repos/loopmediagroup/gally/git/refs",
+        "body": {
+            "ref": "refs/heads/dev",
+            "sha": "--sha--"
+        },
+        "status": 400
+    }
+]
