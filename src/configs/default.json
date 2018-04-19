@@ -2,26 +2,23 @@
   "defaultBranch": "master",
   "branches": {
     "dev": {
-      "protection": "full",
+      "protection": "$full",
       "create": true
     },
     "stage": {
-      "protection": "full",
+      "protection": "$full",
       "create": true
     },
     "master": {
-      "protection": "full",
+      "protection": "$full",
       "create": true
     },
     "fix/*": {},
     "feat/*": {},
     "greenkeeper/*": {}
   },
-  "status-checks": {
-    "exclusions": []
-  },
   "protection": {
-    "full": {
+    "$full": {
       "required_status_checks": {
         "strict": true,
         "contexts": [

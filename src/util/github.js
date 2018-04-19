@@ -24,7 +24,7 @@ const evaluate = async (config, remote) => {
   const configBranches = Object.keys(get(config, "config.local.branches", {}));
   const branchInfo = gitBranch.evaluate(configBranches, remoteBranches);
   if (branchInfo.unexpected.length !== 0) {
-    throw new Error("Unexpected Branches: " + branchInfo.unexpected.join(", "));
+    throw new Error(`Unexpected Branches: ${branchInfo.unexpected.join(", ")}`);
   }
 
   // handle missing branches
@@ -37,7 +37,7 @@ const evaluate = async (config, remote) => {
       logger.info(chalk.green("ok"));
       // update branchInfo
       branchInfo.matched.push(...toCreate);
-      toCreate.forEach(b => branchInfo.splice(branchInfo.missing.indexOf(b), 1));
+      toCreate.forEach(b => branchInfo.missing.splice(branchInfo.missing.indexOf(b), 1));
     } else {
       logger.info(chalk.red("failure"));
     }

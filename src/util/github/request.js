@@ -3,6 +3,10 @@ const crypto = require("crypto");
 
 const cache = {};
 
+const flushCache = () => {
+  Object.keys(cache).forEach(e => delete cache[e]);
+};
+
 const ghRequest = async (method, uri, token, body, cached) => {
   const md5 = [method, uri, token, body]
     .reduce((prev, cur) => prev.update(String(cur)), crypto.createHash("md5")).digest("hex");
@@ -24,6 +28,6 @@ const ghRequest = async (method, uri, token, body, cached) => {
   return cache[md5];
 };
 
-module.exports = ["get", "post", "delete", "put", "patch"].reduce((prev, cur) => Object.assign(prev, {
+module.exports = Object.assign(["get", "post", "delete", "put", "patch"].reduce((prev, cur) => Object.assign(prev, {
   [cur]: (uri, token, { body = undefined, cached = false } = {}) => ghRequest(cur, uri, token, body, cached)
-}), {});
+}), {}), { flushCache });

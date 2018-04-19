@@ -1,12 +1,17 @@
 const path = require("path");
 const expect = require('chai').expect;
 const branch = require("./../../../src/util/github/branch");
+const request = require("./../../../src/util/github/request");
 const nockBack = require('nock').back;
 
 describe("Testing branch", () => {
   before(() => {
     nockBack.setMode('record');
     nockBack.fixtures = path.join(__dirname, "__cassette");
+  });
+
+  beforeEach(() => {
+    request.flushCache();
   });
 
   // eslint-disable-next-line func-names
