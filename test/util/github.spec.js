@@ -87,4 +87,32 @@ describe("Testing github", () => {
       });
     });
   });
+
+  // eslint-disable-next-line func-names
+  it("Testing evaluate (sync only)", function (done) {
+    this.timeout(60000);
+    nockBack(`github-evaluate-sync-only.json`, {}, (nockDone) => {
+      github.evaluate({
+        config: {
+          local: {
+            defaultBranch: "master",
+            branches: {
+              master: {
+                protection: "$full",
+                create: true
+              }
+            },
+            protection: {
+              "$full": {}
+            }
+          }
+        },
+        credentials: { github: { token: "--secret-token--" } }
+      }, "upstream").then((r) => {
+        expect(r).to.deep.equal({});
+        nockDone();
+        done();
+      });
+    });
+  });
 });
