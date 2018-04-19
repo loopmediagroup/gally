@@ -33,9 +33,8 @@
     },
     {
         "scope": "https://api.github.com:443",
-        "method": "PUT",
+        "method": "DELETE",
         "path": "/repos/loopmediagroup/gally/branches/dev/protection",
-        "body": {},
-        "status": 200
+        "status": 400
     }
 ]

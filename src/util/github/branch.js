@@ -16,14 +16,14 @@ const updateProtection = async (branch, protection, repoKey, token) => {
       `https://api.github.com/repos/${repoKey}/branches/${branch}/protection`,
       token
     );
-    return [204, 404].indexOf(result.statusCode) !== -1;
+    return [204, 404].indexOf(result.statusCode) !== -1 ? true : result.body;
   }
   const result = await request.put(
     `https://api.github.com/repos/${repoKey}/branches/${branch}/protection`,
     token,
     { body: protection }
   );
-  return result.statusCode === 200;
+  return result.statusCode === 200 ? true : result.body;
 };
 module.exports.updateProtection = updateProtection;
 

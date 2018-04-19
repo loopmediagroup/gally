@@ -122,12 +122,14 @@ describe("Testing github", () => {
   // eslint-disable-next-line func-names
   it("Testing evaluate (sync failure)", function (done) {
     this.timeout(60000);
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    set(config, "config.local.branches.dev.protection", null);
     nockBack(`github-evaluate-sync-failure.json`, {}, (nockDone) => {
-      github.evaluate(configTemplate, "upstream").catch((e) => {
+      github.evaluate(config, "upstream").catch((e) => {
         expect(logs).to.deep.equal([
-          `Synchronizing Branches: master [${chalk.green("protected")}], dev [${chalk.green("protected")}]`
+          `Synchronizing Branches: master [${chalk.green("protected")}], dev [${chalk.red("unprotected")}]`
         ]);
-        expect(e.message).to.deep.equal("Failed to sync Branch!");
+        expect(e.message).to.deep.equal("Failed to sync Branch: \n");
         nockDone();
         done();
       });
