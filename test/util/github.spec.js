@@ -1,0 +1,23 @@
+const path = require("path");
+const expect = require('chai').expect;
+const github = require("./../../src/util/github");
+const nockBack = require('nock').back;
+
+describe("Testing github", () => {
+  before(() => {
+    nockBack.setMode('record');
+    nockBack.fixtures = path.join(__dirname, "__cassette");
+  });
+
+  // eslint-disable-next-line func-names
+  it("Testing evaluate (missing local config)", function (done) {
+    this.timeout(60000);
+    nockBack(`github-evaluate-missing-local-config.json`, {}, (nockDone) => {
+      github.evaluate({ config: { local: null } }, "upstream").catch(e => {
+        expect(e.message).to.equal('Missing ".gally.json". Please run "gally init."');
+        nockDone();
+        done();
+      });
+    });
+  });
+});
