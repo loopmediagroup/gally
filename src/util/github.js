@@ -28,8 +28,8 @@ const evaluate = async (config, remote) => {
   }
 
   // handle missing branches
-  if (branchInfo.missing.length !== 0) {
-    const toCreate = branchInfo.missing.filter(b => config.config.local.branches[b], "create", false);
+  const toCreate = branchInfo.missing.filter(b => get(config.config.local.branches[b], "create", false));
+  if (toCreate.length !== 0) {
     logger.info(`Creating Branches: ${chalk.green(toCreate.join(", "))}`);
     const result = await Promise
       .all(toCreate.map(b => githubBranch.create(b, repoKey, config.credentials.github.token)));
