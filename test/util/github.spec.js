@@ -1,4 +1,5 @@
 const path = require("path");
+const set = require("lodash.set");
 const expect = require('chai').expect;
 const logger = require("./../../src/util/logger");
 const request = require("./../../src/util/github/request");
@@ -145,6 +146,24 @@ describe("Testing github", () => {
       github.evaluate(configTemplate, "upstream").then((r) => {
         expect(logs).to.deep.equal([
           'Synchronizing Branches: master [\u001b[32mprotected\u001b[39m], dev [\u001b[32mprotected\u001b[39m]',
+          '\u001b[32mok\u001b[39m'
+        ]);
+        expect(r).to.deep.equal({});
+        nockDone();
+        done();
+      });
+    });
+  });
+
+  // eslint-disable-next-line func-names
+  it("Testing evaluate (sync only unprotected)", function (done) {
+    this.timeout(60000);
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    set(config, "config.local.branches.dev.protection", null);
+    nockBack(`github-evaluate-sync-only-unprotected.json`, {}, (nockDone) => {
+      github.evaluate(config, "upstream").then((r) => {
+        expect(logs).to.deep.equal([
+          'Synchronizing Branches: master [\u001b[32mprotected\u001b[39m], dev [\u001b[31munprotected\u001b[39m]',
           '\u001b[32mok\u001b[39m'
         ]);
         expect(r).to.deep.equal({});
