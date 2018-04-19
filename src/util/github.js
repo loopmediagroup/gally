@@ -60,7 +60,8 @@ const evaluate = async (config, remote) => {
   if (result.every(e => e === true)) {
     logger.info(chalk.green("ok"));
   } else {
-    throw new Error("Failed to sync Branch!");
+    const details = result.filter(e => e !== true).map(e => JSON.stringify(e, null, 2)).join("\n");
+    throw new Error(`Failed to sync Branch: ${details}`);
   }
   return {};
 };
