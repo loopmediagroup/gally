@@ -24,7 +24,7 @@ const evaluate = async (config, remote) => {
   const configBranches = Object.keys(get(config, "config.local.branches", {}));
   const branchInfo = gitBranch.evaluate(configBranches, remoteBranches);
   if (branchInfo.unexpected.length !== 0) {
-    throw new Error("Unexpected Branches: ") + branchInfo.unexpected.join(", ");
+    throw new Error("Unexpected Branches: " + branchInfo.unexpected.join(", "));
   }
 
   // handle missing branches

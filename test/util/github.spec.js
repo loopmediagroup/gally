@@ -22,7 +22,7 @@ describe("Testing github", () => {
   });
 
   // eslint-disable-next-line func-names
-  it("Testing evaluate (incorrect default-branch)", function (done) {
+  it("Testing evaluate (incorrect default branch)", function (done) {
     this.timeout(60000);
     nockBack(`github-evaluate-incorrect-default-branch.json`, {}, (nockDone) => {
       github.evaluate({
@@ -30,6 +30,21 @@ describe("Testing github", () => {
         credentials: { github: { token: "--secret-token--" } }
       }, "upstream").catch(e => {
         expect(e.message).to.equal('Incorrect default branch configured!');
+        nockDone();
+        done();
+      });
+    });
+  });
+
+  // eslint-disable-next-line func-names
+  it("Testing evaluate (unexpected branch)", function (done) {
+    this.timeout(60000);
+    nockBack(`github-evaluate-unexpected-branch.json`, {}, (nockDone) => {
+      github.evaluate({
+        config: { local: { defaultBranch: "master", branches: [] } },
+        credentials: { github: { token: "--secret-token--" } }
+      }, "upstream").catch(e => {
+        expect(e.message).to.equal('Unexpected Branches: master');
         nockDone();
         done();
       });
