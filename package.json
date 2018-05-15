@@ -29,7 +29,7 @@
     "chai": "4.1.2",
     "coveralls": "3.0.0",
     "js-gardener": "1.22.6",
-    "nock": "9.2.5",
+    "nock": "9.2.6",
     "nyc": "11.7.1",
     "semantic-release": "15.1.7",
     "tmp": "0.0.33"
