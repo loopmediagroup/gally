@@ -92,7 +92,7 @@
     "lodash.get": "4.4.2",
     "lodash.set": "4.3.2",
     "opn": "5.3.0",
-    "request": "2.85.0",
+    "request": "2.86.0",
     "request-promise-native": "1.0.5",
     "yargs": "11.0.0"
   },
