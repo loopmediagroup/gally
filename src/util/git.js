@@ -19,10 +19,10 @@ module.exports.ghPrUrl = async (branch = "dev") => {
   const upstream = await getRemoteUrl(await getRemoteOrBestGuess("upstream", "origin"));
   const origin = await getRemoteUrl(await getRemoteOrBestGuess("origin", "upstream"));
 
-  const sourceBranch = await shell.run("git branch");
+  const sourceBranch = await shell.run("git rev-parse --abbrev-ref HEAD");
 
   const target = `${upstream.slice(0, -4)}/compare/${branch}`;
-  const source = `${origin.split("/").slice(-2, -1)[0]}:${sourceBranch.split(" ").pop()}`;
+  const source = `${origin.split("/").slice(-2, -1)[0]}:${sourceBranch}`;
 
   return `${target}...${source}?expand=1`;
 };
