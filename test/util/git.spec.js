@@ -20,7 +20,7 @@ describe("Testing git.js", () => {
       "git remote": "origin\nupstream\n",
       "git config --get remote.upstream.url": "https://github.com/loopmediagroup/gally.git",
       "git config --get remote.origin.url": "https://github.com/simlu/gally.git",
-      "git branch": "dev"
+      "git rev-parse --abbrev-ref HEAD": "dev"
     };
   });
 
