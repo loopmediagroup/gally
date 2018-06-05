@@ -2,10 +2,12 @@
   "defaultBranch": "master",
   "branches": {
     "dev": {
+      "upstream": "stage",
       "protection": "$full",
       "create": true
     },
     "stage": {
+      "upstream": "master",
       "protection": "$full",
       "create": true
     },
@@ -13,9 +15,15 @@
       "protection": "$full",
       "create": true
     },
-    "fix/*": {},
-    "feat/*": {},
-    "greenkeeper/*": {}
+    "fix/*": {
+      "upstream": "dev"
+    },
+    "feat/*": {
+      "upstream": "dev"
+    },
+    "greenkeeper/*": {
+      "upstream": "dev"
+    }
   },
   "protection": {
     "$full": {
