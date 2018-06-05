@@ -61,4 +61,13 @@ describe("Testing git.js", () => {
       done();
     });
   });
+
+  it("Testing ghPromoteUrl Default", (done) => {
+    git.ghPromoteUrl({
+      config: { local: { branches: { dev: { upstream: "master" } } } }
+    }, "dev").then((r) => {
+      expect(r).to.equal("https://github.com/loopmediagroup/gally/compare/master...dev?expand=1");
+      done();
+    });
+  });
 });
