@@ -1,5 +1,8 @@
 const shell = require("./shell");
 
+const getCurrentBranch = () => shell.run("git rev-parse --abbrev-ref HEAD");
+module.exports.getCurrentBranch = getCurrentBranch;
+
 const getRemoteUrl = remote => shell.run(`git config --get remote.${remote}.url`);
 module.exports.getRemoteUrl = getRemoteUrl;
 
@@ -19,10 +22,21 @@ module.exports.ghPrUrl = async (branch = "dev") => {
   const upstream = await getRemoteUrl(await getRemoteOrBestGuess("upstream", "origin"));
   const origin = await getRemoteUrl(await getRemoteOrBestGuess("origin", "upstream"));
 
-  const sourceBranch = await shell.run("git rev-parse --abbrev-ref HEAD");
+  const sourceBranch = await getCurrentBranch();
 
   const target = `${upstream.slice(0, -4)}/compare/${branch}`;
   const source = `${origin.split("/").slice(-2, -1)[0]}:${sourceBranch}`;
+
+  return `${target}...${source}?expand=1`;
+};
+
+
+module.exports.ghPromoteUrl = async (config, branch) => {
+  const upstream = await getRemoteUrl(await getRemoteOrBestGuess("upstream", "origin"));
+  const upstreamBranch = config.config.local.branches[branch].upstream;
+
+  const source = branch;
+  const target = `${upstream.slice(0, -4)}/compare/${upstreamBranch}`;
 
   return `${target}...${source}?expand=1`;
 };
