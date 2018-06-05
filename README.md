@@ -51,7 +51,7 @@ Create PR from `origin/CURRNET_BRANCH` to remote `upstream/TARGET_BRANCH` with
 
 where `branch` is the target branch (defaults to dev).
 
-### promote <branch>
+### promote \<branch\>
 
 Create PR from `upstream/INPUT_BRANCH` to "upstream" branch `upstream/BRANCH` with
 
