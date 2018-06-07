@@ -3,7 +3,7 @@
   "branches": {
     "dev": {
       "upstream": "master",
-      "protection": "$full",
+      "protection": "$full-strict",
       "create": true
     },
     "master": {
@@ -21,9 +21,13 @@
     }
   },
   "protection": {
+    "$full-strict": {
+      "@": "$full",
+      "strict": true
+    },
     "$full": {
       "required_status_checks": {
-        "strict": true,
+        "strict": false,
         "contexts": [
           "continuous-integration/travis-ci",
           "coverage/coveralls"

@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const get = require("lodash.get");
 const set = require("lodash.set");
+const mergeWith = require("lodash.mergewith");
 const inquirer = require('inquirer');
 const json = require("./util/json");
 
@@ -38,9 +39,31 @@ module.exports.load = async (configDir, cwd) => {
   json.write(globalConfigFile, globalConfig);
   json.write(credentialsFile, credentials);
 
+  const localConfig = json.loadOrDefault(path.join(cwd, ".gally.json"), null);
+  if (localConfig !== null) {
+    const expandProtections = (protections) => {
+      const result = JSON.parse(JSON.stringify(protections));
+      Object.keys(protections).forEach((protectionRef) => {
+        let parent = protections[protectionRef]["@"];
+        while (parent !== undefined) {
+          result[protectionRef] = mergeWith({}, protections[parent], result[protectionRef], (original, add) => {
+            if (typeof original !== 'object') {
+              return add;
+            }
+            return undefined;
+          });
+          parent = protections[parent]["@"];
+        }
+        delete result[protectionRef]["@"];
+      });
+      return result;
+    };
+    localConfig.protection = expandProtections(localConfig.protection);
+  }
+
   return {
     config: {
-      local: json.loadOrDefault(path.join(cwd, ".gally.json"), null),
+      local: localConfig,
       global: globalConfig
     },
     credentials

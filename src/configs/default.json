@@ -3,7 +3,7 @@
   "branches": {
     "dev": {
       "upstream": "stage",
-      "protection": "$full",
+      "protection": "$full-strict",
       "create": true
     },
     "stage": {
@@ -26,9 +26,13 @@
     }
   },
   "protection": {
+    "$full-strict": {
+      "@": "$full",
+      "strict": true
+    },
     "$full": {
       "required_status_checks": {
-        "strict": true,
+        "strict": false,
         "contexts": [
           "continuous-integration/circle-ci",
           "continuous-integration/travis-ci",
