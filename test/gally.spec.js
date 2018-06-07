@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const expect = require('chai').expect;
 const inquirer = require('inquirer');
 const tmp = require('tmp');
@@ -28,10 +30,54 @@ describe("Testing Gally", () => {
     promptCount = 0;
   });
 
+  it("Test Empty Local Config", (done) => {
+    const dir = tmp.dirSync({ keep: false, unsafeCleanup: true }).name;
+    gally.load(`${dir}/$HOME.gally`, dir).then((cfg) => {
+      expect(promptCount).to.equal(2);
+      expect(cfg.config.local).to.equal(null);
+      done();
+    });
+  });
+
   it("Testing load", (done) => {
     const dir = tmp.dirSync({ keep: false, unsafeCleanup: true }).name;
+    const localConfig = {
+      protection: {
+        $child: {
+          "@": "$parent",
+          field: {
+            prop1: "child1"
+          }
+        },
+        $parent: {
+          field: {
+            prop1: "parent1",
+            prop2: "parent2"
+          }
+        }
+      }
+    };
+    fs.writeFileSync(path.join(dir, ".gally.json"), JSON.stringify(localConfig));
     const config = {
-      config: { global: {}, local: null },
+      config: {
+        global: {},
+        local: {
+          protection: {
+            $child: {
+              field: {
+                prop1: "child1",
+                prop2: "parent2"
+              }
+            },
+            $parent: {
+              field: {
+                prop1: "parent1",
+                prop2: "parent2"
+              }
+            }
+          }
+        }
+      },
       credentials: { github: { username: "username", token: 'token' } }
     };
     // load (create)
