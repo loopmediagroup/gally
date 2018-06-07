@@ -46,13 +46,15 @@ describe("Testing Gally", () => {
         $child: {
           "@": "$parent",
           field: {
-            prop1: "child1"
+            prop1: "child1",
+            prop3: []
           }
         },
         $parent: {
           field: {
             prop1: "parent1",
-            prop2: "parent2"
+            prop2: "parent2",
+            prop3: ["parent3"]
           }
         }
       }
@@ -66,13 +68,15 @@ describe("Testing Gally", () => {
             $child: {
               field: {
                 prop1: "child1",
-                prop2: "parent2"
+                prop2: "parent2",
+                prop3: []
               }
             },
             $parent: {
               field: {
                 prop1: "parent1",
-                prop2: "parent2"
+                prop2: "parent2",
+                prop3: ["parent3"]
               }
             }
           }
