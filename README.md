@@ -28,7 +28,7 @@ The default branch for the github repository.
 ### protection
 
 Type: `object`<br>
-Define protection definition as entries in the object. Key names can be freely chosen, values have to be defined according to the [github api docs](https://developer.github.com/v3/repos/branches/#update-branch-protection).
+Define protection definition as entries in the object. Key names can be freely chosen, values have to be defined according to the [github api docs](https://developer.github.com/v3/repos/branches/#update-branch-protection). Can use `"@"` key to extend from other protections.
 
 ### branches
 
