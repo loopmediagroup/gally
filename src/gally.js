@@ -47,7 +47,7 @@ module.exports.load = async (configDir, cwd) => {
         let parent = protections[protectionRef]["@"];
         while (parent !== undefined) {
           result[protectionRef] = mergeWith({}, protections[parent], result[protectionRef], (original, add) => {
-            if (typeof original !== 'object') {
+            if (typeof original !== 'object' || original instanceof Array) {
               return add;
             }
             return undefined;
