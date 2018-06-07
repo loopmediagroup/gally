@@ -23,7 +23,9 @@
   "protection": {
     "$full-strict": {
       "@": "$full",
-      "strict": true
+      "required_status_checks": {
+        "strict": false
+      }
     },
     "$full": {
       "required_status_checks": {
