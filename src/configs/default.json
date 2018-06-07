@@ -29,7 +29,7 @@
     "$full-strict": {
       "@": "$full",
       "required_status_checks": {
-        "strict": false
+        "strict": true
       }
     },
     "$full": {
