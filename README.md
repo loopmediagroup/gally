@@ -25,6 +25,11 @@ To create a config template run `ga init`. The configuration is an object with t
 Type: `object`<br>
 The default branch for the github repository.
 
+### repository.url
+
+Type: `string`<br>
+The main github repository of this project.
+
 ### protection
 
 Type: `object`<br>
@@ -67,6 +72,6 @@ Create a new `.gally.json` file by running
 
 For details on how to adjust the configuration, see the corresponding section.
 
-### sync \<upstream\>
+### sync [remote]
 
-Synchronize config `.gally.json` to remote github repository.
+Synchronize config `.gally.json` to remote github repository defined in config or using remote if passed.
