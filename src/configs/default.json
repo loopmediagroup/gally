@@ -1,5 +1,8 @@
 {
   "defaultBranch": "master",
+  "repository": {
+    "url": "https://github.com/ACCOUNT/REPO.git"
+  },
   "branches": {
     "dev": {
       "upstream": "stage",
