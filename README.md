@@ -16,6 +16,12 @@ Git-Ally - Automation around Github.com Repository Management
 
     $ npm i -g gally
 
+## Github Credentials
+
+You will be prompted to enter a personal github token that will then be stored as plain text on disk.
+
+If an environment variable `GH_TOKEN` is present, no prompt is displayed and the variable is stored directly.
+
 ## Contents of `.gally.json`
 
 To create a config template run `ga init`. The configuration is an object with the following top level keys.
