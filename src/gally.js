@@ -17,8 +17,8 @@ module.exports.load = async (configDir, cwd) => {
   const globalConfig = json.loadOrDefault(globalConfigFile);
   const credentials = json.loadOrDefault(credentialsFile);
 
-  if (get(credentials, "github.token") === undefined) {
-    const token = process.env.GH_TOKEN || (await inquirer.prompt([{
+  if (get(credentials, "github.token", process.env.GH_TOKEN) === undefined) {
+    const token = (await inquirer.prompt([{
       type: 'password',
       message: 'Enter github personal access token',
       name: 'token',

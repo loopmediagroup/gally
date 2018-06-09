@@ -8,7 +8,7 @@
             "head": "dev",
             "base": "master",
             "maintainer_can_modify": false,
-            "body": "Automatically created by Gally Branch Promotion"
+            "body": "Automatically created by Git-Ally"
         },
         "status": 201,
         "response": {
