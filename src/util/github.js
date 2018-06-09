@@ -16,6 +16,9 @@ const getRepoKey = async (config, remote = undefined) => {
 const promoteBranch = async (config, remote, branch) => {
   const repoKey = await getRepoKey(config, remote);
   const upstreamBranch = config.config.local.branches[branch].upstream;
+  if (upstreamBranch === undefined) {
+    return `Warning: Branch "${branch}" has no upstream defined.`;
+  }
   const result = await githubPr.create(branch, upstreamBranch, repoKey, getToken(config));
   if (result.statusCode === 201) {
     return result.body.html_url;

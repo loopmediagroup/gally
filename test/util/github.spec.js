@@ -217,6 +217,15 @@ describe("Testing github", () => {
     });
   });
 
+  it("Testing promoteBranch Missing Upstream", (done) => {
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    github.promoteBranch(config, undefined, "master").then((r) => {
+      expect(logs).to.deep.equal([]);
+      expect(r).to.deep.equal('Warning: Branch "master" has no upstream defined.');
+      done();
+    });
+  });
+
   // eslint-disable-next-line func-names
   it("Testing promoteBranch Pr Exists", function (done) {
     this.timeout(60000);
