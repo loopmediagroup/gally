@@ -16,6 +16,12 @@ Git-Ally - Automation around Github.com Repository Management
 
     $ npm i -g gally
 
+## Github Credentials
+
+You will be prompted to enter a personal github token that will then be stored as plain text on disk.
+
+If an environment variable `GH_TOKEN` is present, no prompt is displayed and the variable is stored directly.
+
 ## Contents of `.gally.json`
 
 To create a config template run `ga init`. The configuration is an object with the following top level keys.
@@ -24,6 +30,11 @@ To create a config template run `ga init`. The configuration is an object with t
 
 Type: `object`<br>
 The default branch for the github repository.
+
+### repository.url
+
+Type: `string`<br>
+The main github repository of this project.
 
 ### protection
 
@@ -67,6 +78,6 @@ Create a new `.gally.json` file by running
 
 For details on how to adjust the configuration, see the corresponding section.
 
-### sync \<upstream\>
+### sync [remote]
 
-Synchronize config `.gally.json` to remote github repository.
+Synchronize config `.gally.json` to remote github repository defined in config or using remote if passed.
