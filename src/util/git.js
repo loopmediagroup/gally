@@ -29,14 +29,3 @@ module.exports.ghPrUrl = async (branch = "dev") => {
 
   return `${target}...${source}?expand=1`;
 };
-
-
-module.exports.ghPromoteUrl = async (config, branch) => {
-  const upstream = await getRemoteUrl(await getRemoteOrBestGuess("upstream", "origin"));
-  const upstreamBranch = config.config.local.branches[branch].upstream;
-
-  const source = branch;
-  const target = `${upstream.slice(0, -4)}/compare/${upstreamBranch}`;
-
-  return `${target}...${source}?expand=1`;
-};

@@ -12,8 +12,12 @@ const configTemplate = {
   config: {
     local: {
       defaultBranch: "master",
+      repository: {
+        url: "https://github.com/loopmediagroup/gally.git"
+      },
       branches: {
         dev: {
+          upstream: "master",
           protection: "$full",
           create: true
         },
@@ -79,7 +83,12 @@ describe("Testing github", () => {
     this.timeout(60000);
     nockBack(`github-evaluate-incorrect-default-branch.json`, {}, (nockDone) => {
       github.evaluate({
-        config: { local: { defaultBranch: "custom" } },
+        config: {
+          local: {
+            defaultBranch: "custom",
+            repository: { url: "https://github.com/loopmediagroup/gally.git" }
+          }
+        },
         credentials: { github: { token: "--secret-token--" } }
       }, "upstream").catch((e) => {
         expect(logs).to.deep.equal([]);
@@ -95,9 +104,15 @@ describe("Testing github", () => {
     this.timeout(60000);
     nockBack(`github-evaluate-unexpected-branch.json`, {}, (nockDone) => {
       github.evaluate({
-        config: { local: { defaultBranch: "master", branches: [] } },
+        config: {
+          local: {
+            defaultBranch: "master",
+            repository: { url: "https://github.com/loopmediagroup/gally.git" },
+            branches: []
+          }
+        },
         credentials: { github: { token: "--secret-token--" } }
-      }, "upstream").catch((e) => {
+      }).catch((e) => {
         expect(logs).to.deep.equal([]);
         expect(e.message).to.equal('Unexpected Branches: master');
         nockDone();
@@ -182,6 +197,48 @@ describe("Testing github", () => {
           chalk.green("ok")
         ]);
         expect(r).to.deep.equal({});
+        nockDone();
+        done();
+      });
+    });
+  });
+
+  // eslint-disable-next-line func-names
+  it("Testing promoteBranch Pr Created", function (done) {
+    this.timeout(60000);
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    nockBack(`github-promoteBranch-pr-created.json`, {}, (nockDone) => {
+      github.promoteBranch(config, undefined, "dev").then((r) => {
+        expect(logs).to.deep.equal([]);
+        expect(r).to.deep.equal("https://github.com/loopmediagroup/gally/pull/62");
+        nockDone();
+        done();
+      });
+    });
+  });
+
+  // eslint-disable-next-line func-names
+  it("Testing promoteBranch Pr Exists", function (done) {
+    this.timeout(60000);
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    nockBack(`github-promoteBranch-pr-exists.json`, {}, (nockDone) => {
+      github.promoteBranch(config, undefined, "dev").then((r) => {
+        expect(logs).to.deep.equal([]);
+        expect(r).to.deep.equal("https://github.com/loopmediagroup/gally/pulls");
+        nockDone();
+        done();
+      });
+    });
+  });
+
+  // eslint-disable-next-line func-names
+  it("Testing promoteBranch 401 Error", function (done) {
+    this.timeout(60000);
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    nockBack(`github-promoteBranch-401-error.json`, {}, (nockDone) => {
+      github.promoteBranch(config, undefined, "dev").then((r) => {
+        expect(logs).to.deep.equal([]);
+        expect(r).to.deep.equal("401: Bad credentials");
         nockDone();
         done();
       });
