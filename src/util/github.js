@@ -4,14 +4,33 @@ const git = require("./git");
 const logger = require("./logger");
 const gitBranch = require("./git/branch");
 const githubBranch = require("./github/branch");
+const githubPr = require("./github/pr");
 
-const evaluate = async (config, remote) => {
+const getRepoKey = async (config, remote = undefined) => {
+  const remoteUrl = remote ? await git.getRemoteUrl(remote) : get(config, "config.local.repository.url");
+  return remoteUrl.slice(0, -4).split("/").slice(-2).join("/");
+};
+
+const promoteBranch = async (config, remote, branch) => {
+  const repoKey = await getRepoKey(config, remote);
+  const upstreamBranch = config.config.local.branches[branch].upstream;
+  const result = await githubPr.create(branch, upstreamBranch, repoKey, config.credentials.github.token);
+  if (result.statusCode === 201) {
+    return result.body.html_url;
+  }
+  if (get(result, "body.errors[0].message", "").startsWith("A pull request already exists for ")) {
+    return `https://github.com/${repoKey}/pulls`;
+  }
+  return `${result.statusCode}: ${get(result, "body.message")}`;
+};
+module.exports.promoteBranch = promoteBranch;
+
+const evaluate = async (config, remote = undefined) => {
   if (config.config.local === null) {
     throw new Error(`Missing ".gally.json". Please run "gally init."`);
   }
 
-  const remoteUrl = remote ? await git.getRemoteUrl(remote) : get(config, "config.local.repository.url");
-  const repoKey = remoteUrl.slice(0, -4).split("/").slice(-2).join("/");
+  const repoKey = await getRepoKey(config, remote);
 
   // check default branch
   const defaultBranch = await githubBranch.getDefaultBranch(repoKey, config.credentials.github.token);

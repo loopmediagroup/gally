@@ -56,19 +56,21 @@ All commands are available as `ga` or `gally`.
 
 ### pr [branch]
 
-Create PR from `origin/CURRNET_BRANCH` to remote `upstream/TARGET_BRANCH` with
+Open PR Url from `origin/CURRNET_BRANCH` to remote `upstream/TARGET_BRANCH` with
 
     $ ga pr [branch]
 
 where `branch` is the target branch (defaults to dev).
 
-### promote \<branch\>
+### promote [remote] \<branch\>
 
 Create PR from `upstream/INPUT_BRANCH` to "upstream" branch `upstream/BRANCH` with
 
     $ ga promote <branch>
 
 where the upstream branch is defined in the configuration file under "upstream".
+
+You can define a custom remote if so desired.
 
 ### init
 

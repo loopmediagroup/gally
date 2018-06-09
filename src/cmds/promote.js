@@ -1,11 +1,12 @@
 const os = require("os");
-const git = require("./../util/git");
+const github = require("./../util/github");
 const gally = require("./../gally");
-const open = require("./../util/open");
+const logger = require("./../util/logger");
 
-exports.command = 'promote <branch>';
+exports.command = 'promote [remote] <branch>';
 exports.desc = 'Open pr URL from provided to configured "upstream" branch';
 exports.builder = {};
 exports.handler = argv => gally
   .load(`${os.homedir()}/.gally`, process.cwd())
-  .then(config => git.ghPromoteUrl(config, argv.branch).then(open.url));
+  .then(config => github.promoteBranch(config, argv.remote, argv.branch))
+  .then(logger.info);

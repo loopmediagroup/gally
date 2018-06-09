@@ -17,6 +17,7 @@ const configTemplate = {
       },
       branches: {
         dev: {
+          upstream: "master",
           protection: "$full",
           create: true
         },
@@ -196,6 +197,48 @@ describe("Testing github", () => {
           chalk.green("ok")
         ]);
         expect(r).to.deep.equal({});
+        nockDone();
+        done();
+      });
+    });
+  });
+
+  // eslint-disable-next-line func-names
+  it("Testing promoteBranch Pr Created", function (done) {
+    this.timeout(60000);
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    nockBack(`github-promoteBranch-pr-created.json`, {}, (nockDone) => {
+      github.promoteBranch(config, undefined, "dev").then((r) => {
+        expect(logs).to.deep.equal([]);
+        expect(r).to.deep.equal("https://github.com/loopmediagroup/gally/pull/62");
+        nockDone();
+        done();
+      });
+    });
+  });
+
+  // eslint-disable-next-line func-names
+  it("Testing promoteBranch Pr Exists", function (done) {
+    this.timeout(60000);
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    nockBack(`github-promoteBranch-pr-exists.json`, {}, (nockDone) => {
+      github.promoteBranch(config, undefined, "dev").then((r) => {
+        expect(logs).to.deep.equal([]);
+        expect(r).to.deep.equal("https://github.com/loopmediagroup/gally/pulls");
+        nockDone();
+        done();
+      });
+    });
+  });
+
+  // eslint-disable-next-line func-names
+  it("Testing promoteBranch 401 Error", function (done) {
+    this.timeout(60000);
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    nockBack(`github-promoteBranch-401-error.json`, {}, (nockDone) => {
+      github.promoteBranch(config, undefined, "dev").then((r) => {
+        expect(logs).to.deep.equal([]);
+        expect(r).to.deep.equal("401: Bad credentials");
         nockDone();
         done();
       });

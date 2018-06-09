@@ -1,0 +1,19 @@
+[
+    {
+        "scope": "https://api.github.com:443",
+        "method": "POST",
+        "path": "/repos/loopmediagroup/gally/pulls",
+        "body": {
+            "title": "[Gally]: master <- dev",
+            "head": "dev",
+            "base": "master",
+            "maintainer_can_modify": false,
+            "body": "Automatically created by Gally Branch Promotion"
+        },
+        "status": 401,
+        "response": {
+            "message": "Bad credentials",
+            "documentation_url": "https://developer.github.com/v3"
+        }
+    }
+]
