@@ -29,8 +29,13 @@ To create a config template run `ga init`. The configuration is an object with t
 
 ### defaultBranch
 
-Type: `object`<br>
+Type: `string`<br>
 The default branch for the github repository.
+
+### contribBranch
+
+Type: `string`<br>
+The branch used as target for pull requests. Defaults to `dev`.
 
 ### repository.url
 
