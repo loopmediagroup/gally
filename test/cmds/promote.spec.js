@@ -1,39 +1,39 @@
 const expect = require('chai').expect;
-const open = require("./../../src/util/open");
+const github = require("./../../src/util/github");
 const promote = require("./../../src/cmds/promote");
 const gally = require("./../../src/gally");
-const git = require("./../../src/util/git");
+const logger = require("./../../src/util/logger");
 
 describe("Testing `promote <branch>`", () => {
   let gallyLoad;
-  const urls = [];
-  let gitGhPromoteUrl;
-  let openUrl;
+  const logs = [];
+  let githubPromoteBranch;
+  let loggerInfo;
 
   before(() => {
     gallyLoad = gally.load;
     gally.load = () => Promise.resolve({});
-    gitGhPromoteUrl = git.ghPromoteUrl;
-    git.ghPromoteUrl = () => Promise.resolve("URL");
-    openUrl = open.url;
-    open.url = (url) => {
-      urls.push(url);
+    githubPromoteBranch = github.promoteBranch;
+    github.promoteBranch = () => Promise.resolve("URL");
+    loggerInfo = logger.info;
+    logger.info = (log) => {
+      logs.push(log);
     };
   });
 
   after(() => {
-    git.ghPromoteUrl = gitGhPromoteUrl;
-    open.url = openUrl;
+    github.promoteBranch = githubPromoteBranch;
+    logger.info = loggerInfo;
     gally.load = gallyLoad;
   });
 
   beforeEach(() => {
-    urls.length = 0;
+    logs.length = 0;
   });
 
   it("Testing promote (Integration)", (done) => {
     promote.handler({}).then(() => {
-      expect(urls).to.deep.equal(['URL']);
+      expect(logs).to.deep.equal(["URL"]);
       done();
     });
   });

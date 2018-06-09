@@ -8,6 +8,7 @@ const gally = require('./../src/gally');
 tmp.setGracefulCleanup();
 
 describe("Testing Gally", () => {
+  let ghToken;
   let inquirerPrompt;
   let promptCount = 0;
 
@@ -19,10 +20,13 @@ describe("Testing Gally", () => {
         token: "token"
       };
     };
+    ghToken = process.env.GH_TOKEN;
+    delete process.env.GH_TOKEN;
   });
 
   after(() => {
     inquirer.prompt = inquirerPrompt;
+    process.env.GH_TOKEN = ghToken;
   });
 
   beforeEach(() => {

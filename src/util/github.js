@@ -4,23 +4,44 @@ const git = require("./git");
 const logger = require("./logger");
 const gitBranch = require("./git/branch");
 const githubBranch = require("./github/branch");
+const githubPr = require("./github/pr");
 
-const evaluate = async (config, remote) => {
+const getToken = config => get(config, "credentials.github.token", process.env.GH_TOKEN);
+
+const getRepoKey = async (config, remote = undefined) => {
+  const remoteUrl = remote ? await git.getRemoteUrl(remote) : get(config, "config.local.repository.url");
+  return remoteUrl.slice(0, -4).split("/").slice(-2).join("/");
+};
+
+const promoteBranch = async (config, remote, branch) => {
+  const repoKey = await getRepoKey(config, remote);
+  const upstreamBranch = config.config.local.branches[branch].upstream;
+  const result = await githubPr.create(branch, upstreamBranch, repoKey, getToken(config));
+  if (result.statusCode === 201) {
+    return result.body.html_url;
+  }
+  if (get(result, "body.errors[0].message", "").startsWith("A pull request already exists for ")) {
+    return `https://github.com/${repoKey}/pulls`;
+  }
+  return `${result.statusCode}: ${get(result, "body.message")}`;
+};
+module.exports.promoteBranch = promoteBranch;
+
+const evaluate = async (config, remote = undefined) => {
   if (config.config.local === null) {
     throw new Error(`Missing ".gally.json". Please run "gally init."`);
   }
 
-  const remoteUrl = remote ? await git.getRemoteUrl(remote) : get(config, "config.local.repository.url");
-  const repoKey = remoteUrl.slice(0, -4).split("/").slice(-2).join("/");
+  const repoKey = await getRepoKey(config, remote);
 
   // check default branch
-  const defaultBranch = await githubBranch.getDefaultBranch(repoKey, config.credentials.github.token);
+  const defaultBranch = await githubBranch.getDefaultBranch(repoKey, getToken(config));
   if (get(config, "config.local.defaultBranch", "master") !== defaultBranch) {
     throw new Error("Incorrect default branch configured!");
   }
 
   // obtain branches and do basic checking
-  const remoteBranches = await githubBranch.list(repoKey, config.credentials.github.token);
+  const remoteBranches = await githubBranch.list(repoKey, getToken(config));
   const configBranches = Object.keys(get(config, "config.local.branches", {}));
   const branchInfo = gitBranch.evaluate(configBranches, remoteBranches);
   if (branchInfo.unexpected.length !== 0) {
@@ -32,7 +53,7 @@ const evaluate = async (config, remote) => {
   if (toCreate.length !== 0) {
     logger.info(`Creating Branches: ${chalk.green(toCreate.join(", "))}`);
     const result = await Promise
-      .all(toCreate.map(b => githubBranch.create(b, repoKey, config.credentials.github.token)));
+      .all(toCreate.map(b => githubBranch.create(b, repoKey, getToken(config))));
     if (result.every(e => e === true)) {
       logger.info(chalk.green("ok"));
       // update branchInfo
@@ -56,7 +77,7 @@ const evaluate = async (config, remote) => {
       : `${e} [${chalk.green("protected")}]`))
     .join(", ")}`);
   const result = await Promise.all(Object.keys(toSync).map(b => githubBranch
-    .updateProtection(b, toSync[b], repoKey, config.credentials.github.token)));
+    .updateProtection(b, toSync[b], repoKey, getToken(config))));
   if (result.every(e => e === true)) {
     logger.info(chalk.green("ok"));
   } else {

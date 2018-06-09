@@ -20,7 +20,8 @@ Git-Ally - Automation around Github.com Repository Management
 
 You will be prompted to enter a personal github token that will then be stored as plain text on disk.
 
-If an environment variable `GH_TOKEN` is present, no prompt is displayed and the variable is stored directly.
+If an environment variable `GH_TOKEN` is present and credentials are not set, 
+the environment variable is used and no prompt is displayed.
 
 ## Contents of `.gally.json`
 
@@ -56,19 +57,21 @@ All commands are available as `ga` or `gally`.
 
 ### pr [branch]
 
-Create PR from `origin/CURRNET_BRANCH` to remote `upstream/TARGET_BRANCH` with
+Open PR Url from `origin/CURRNET_BRANCH` to remote `upstream/TARGET_BRANCH` with
 
     $ ga pr [branch]
 
 where `branch` is the target branch (defaults to dev).
 
-### promote \<branch\>
+### promote [remote] \<branch\>
 
 Create PR from `upstream/INPUT_BRANCH` to "upstream" branch `upstream/BRANCH` with
 
     $ ga promote <branch>
 
 where the upstream branch is defined in the configuration file under "upstream".
+
+You can define a custom remote if so desired.
 
 ### init
 
