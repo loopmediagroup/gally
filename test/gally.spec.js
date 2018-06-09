@@ -16,7 +16,6 @@ describe("Testing Gally", () => {
     inquirer.prompt = () => {
       promptCount += 1;
       return {
-        username: "username",
         token: "token"
       };
     };
@@ -33,7 +32,7 @@ describe("Testing Gally", () => {
   it("Test Empty Local Config", (done) => {
     const dir = tmp.dirSync({ keep: false, unsafeCleanup: true }).name;
     gally.load(`${dir}/$HOME.gally`, dir).then((cfg) => {
-      expect(promptCount).to.equal(2);
+      expect(promptCount).to.equal(1);
       expect(cfg.config.local).to.equal(null);
       done();
     });
@@ -82,16 +81,16 @@ describe("Testing Gally", () => {
           }
         }
       },
-      credentials: { github: { username: "username", token: 'token' } }
+      credentials: { github: { token: 'token' } }
     };
     // load (create)
     gally.load(`${dir}/$HOME.gally`, dir).then((cfg1) => {
       expect(cfg1).to.deep.equal(config);
-      expect(promptCount).to.equal(2);
+      expect(promptCount).to.equal(1);
       // load (existing)
       gally.load(`${dir}/$HOME.gally`, dir).then((cfg2) => {
         expect(cfg2).to.deep.equal(config);
-        expect(promptCount).to.equal(2);
+        expect(promptCount).to.equal(1);
         done();
       });
     });

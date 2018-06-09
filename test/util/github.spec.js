@@ -12,6 +12,9 @@ const configTemplate = {
   config: {
     local: {
       defaultBranch: "master",
+      repository: {
+        url: "https://github.com/loopmediagroup/gally.git"
+      },
       branches: {
         dev: {
           protection: "$full",
@@ -79,7 +82,12 @@ describe("Testing github", () => {
     this.timeout(60000);
     nockBack(`github-evaluate-incorrect-default-branch.json`, {}, (nockDone) => {
       github.evaluate({
-        config: { local: { defaultBranch: "custom" } },
+        config: {
+          local: {
+            defaultBranch: "custom",
+            repository: { url: "https://github.com/loopmediagroup/gally.git" }
+          }
+        },
         credentials: { github: { token: "--secret-token--" } }
       }, "upstream").catch((e) => {
         expect(logs).to.deep.equal([]);
@@ -95,9 +103,15 @@ describe("Testing github", () => {
     this.timeout(60000);
     nockBack(`github-evaluate-unexpected-branch.json`, {}, (nockDone) => {
       github.evaluate({
-        config: { local: { defaultBranch: "master", branches: [] } },
+        config: {
+          local: {
+            defaultBranch: "master",
+            repository: { url: "https://github.com/loopmediagroup/gally.git" },
+            branches: []
+          }
+        },
         credentials: { github: { token: "--secret-token--" } }
-      }, "upstream").catch((e) => {
+      }).catch((e) => {
         expect(logs).to.deep.equal([]);
         expect(e.message).to.equal('Unexpected Branches: master');
         nockDone();
