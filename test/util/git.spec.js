@@ -32,7 +32,7 @@ describe("Testing git.js", () => {
   });
 
   it("Testing ghPrUrl Custom Target", (done) => {
-    git.ghPrUrl("custom").then((r) => {
+    git.ghPrUrl({}, "custom").then((r) => {
       expect(r).to.equal("https://github.com/loopmediagroup/gally/compare/custom...simlu:dev?expand=1");
       done();
     });

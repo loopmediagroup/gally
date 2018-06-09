@@ -1,3 +1,4 @@
+const get = require("lodash.get");
 const shell = require("./shell");
 
 const getCurrentBranch = () => shell.run("git rev-parse --abbrev-ref HEAD");
@@ -18,13 +19,13 @@ const getRemoteOrBestGuess = async (remote, exclude) => {
 };
 module.exports.getRemoteOrBestGuess = getRemoteOrBestGuess;
 
-module.exports.ghPrUrl = async (branch = "dev") => {
+module.exports.ghPrUrl = async (config, branch) => {
   const upstream = await getRemoteUrl(await getRemoteOrBestGuess("upstream", "origin"));
   const origin = await getRemoteUrl(await getRemoteOrBestGuess("origin", "upstream"));
 
   const sourceBranch = await getCurrentBranch();
 
-  const target = `${upstream.slice(0, -4)}/compare/${branch}`;
+  const target = `${upstream.slice(0, -4)}/compare/${branch || get(config, "config.local.contribBranch", "dev")}`;
   const source = `${origin.split("/").slice(-2, -1)[0]}:${sourceBranch}`;
 
   return `${target}...${source}?expand=1`;

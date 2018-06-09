@@ -1,5 +1,6 @@
 {
   "defaultBranch": "master",
+  "contribBranch": "dev",
   "repository": {
     "url": "https://github.com/ACCOUNT/REPO.git"
   },
