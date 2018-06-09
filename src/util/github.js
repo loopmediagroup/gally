@@ -10,7 +10,7 @@ const evaluate = async (config, remote) => {
     throw new Error(`Missing ".gally.json". Please run "gally init."`);
   }
 
-  const remoteUrl = await git.getRemoteUrl(remote);
+  const remoteUrl = remote ? await git.getRemoteUrl(remote) : get(config, "config.local.repository.url");
   const repoKey = remoteUrl.slice(0, -4).split("/").slice(-2).join("/");
 
   // check default branch
