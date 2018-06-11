@@ -46,7 +46,14 @@ describe("Testing Gally", () => {
     const dir = tmp.dirSync({ keep: false, unsafeCleanup: true }).name;
     const localConfig = {
       protection: {
-        $child: {
+        $child2: {
+          "@": "$parent",
+          field: {
+            prop1: "child2",
+            prop3: []
+          }
+        },
+        $child1: {
           "@": "$parent",
           field: {
             prop1: "child1",
@@ -68,7 +75,14 @@ describe("Testing Gally", () => {
         global: {},
         local: {
           protection: {
-            $child: {
+            $child2: {
+              field: {
+                prop1: "child2",
+                prop2: "parent2",
+                prop3: []
+              }
+            },
+            $child1: {
               field: {
                 prop1: "child1",
                 prop2: "parent2",
