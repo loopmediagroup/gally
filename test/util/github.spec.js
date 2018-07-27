@@ -165,7 +165,7 @@ describe("Testing github", () => {
         expect(r).to.deep.equal({});
         nockDone();
         done();
-      });
+      }).catch(done.fail);
     });
   });
 
@@ -181,7 +181,7 @@ describe("Testing github", () => {
         expect(r).to.deep.equal({});
         nockDone();
         done();
-      });
+      }).catch(done.fail);
     });
   });
 
@@ -199,7 +199,7 @@ describe("Testing github", () => {
         expect(r).to.deep.equal({});
         nockDone();
         done();
-      });
+      }).catch(done.fail);
     });
   });
 
@@ -213,7 +213,7 @@ describe("Testing github", () => {
         expect(r).to.deep.equal("https://github.com/loopmediagroup/gally/pull/62");
         nockDone();
         done();
-      });
+      }).catch(done.fail);
     });
   });
 
@@ -223,7 +223,7 @@ describe("Testing github", () => {
       expect(logs).to.deep.equal([]);
       expect(r).to.deep.equal('Warning: Branch "master" has no upstream defined.');
       done();
-    });
+    }).catch(done.fail);
   });
 
   // eslint-disable-next-line func-names
@@ -236,7 +236,7 @@ describe("Testing github", () => {
         expect(r).to.deep.equal("https://github.com/loopmediagroup/gally/pulls");
         nockDone();
         done();
-      });
+      }).catch(done.fail);
     });
   });
 
@@ -250,7 +250,7 @@ describe("Testing github", () => {
         expect(r).to.deep.equal("401: Bad credentials");
         nockDone();
         done();
-      });
+      }).catch(done.fail);
     });
   });
 });

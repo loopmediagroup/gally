@@ -2,7 +2,6 @@
 
 [![Build Status](https://img.shields.io/travis/loopmediagroup/gally/master.svg)](https://travis-ci.org/loopmediagroup/gally)
 [![Test Coverage](https://img.shields.io/coveralls/loopmediagroup/gally/master.svg)](https://coveralls.io/github/loopmediagroup/gally?branch=master)
-[![Greenkeeper Badge](https://badges.greenkeeper.io/loopmediagroup/gally.svg)](https://greenkeeper.io/)
 [![Dependencies](https://david-dm.org/loopmediagroup/gally/status.svg)](https://david-dm.org/loopmediagroup/gally)
 [![NPM](https://img.shields.io/npm/v/gally.svg)](https://www.npmjs.com/package/gally)
 [![Downloads](https://img.shields.io/npm/dt/gally.svg)](https://www.npmjs.com/package/gally)

@@ -28,14 +28,14 @@ describe("Testing git.js", () => {
     git.ghPrUrl().then((r) => {
       expect(r).to.equal("https://github.com/loopmediagroup/gally/compare/dev...simlu:dev?expand=1");
       done();
-    });
+    }).catch(done.fail);
   });
 
   it("Testing ghPrUrl Custom Target", (done) => {
     git.ghPrUrl({}, "custom").then((r) => {
       expect(r).to.equal("https://github.com/loopmediagroup/gally/compare/custom...simlu:dev?expand=1");
       done();
-    });
+    }).catch(done.fail);
   });
 
   it("Testing getRemoteOrBestGuess no git remote defined.", (done) => {
@@ -43,7 +43,7 @@ describe("Testing git.js", () => {
     git.getRemoteOrBestGuess("origin", "upstream").catch((e) => {
       expect(e.message).to.equal("No git remotes defined.");
       done();
-    });
+    }).then(done.fail);
   });
 
   it("Testing getRemoteOrBestGuess single with exclude still returned.", (done) => {
@@ -51,7 +51,7 @@ describe("Testing git.js", () => {
     git.getRemoteOrBestGuess("origin", "custom").then((r) => {
       expect(r).to.equal("custom");
       done();
-    });
+    }).catch(done.fail);
   });
 
   it("Testing getRemoteOrBestGuess position with exclude returns second.", (done) => {
@@ -59,6 +59,6 @@ describe("Testing git.js", () => {
     git.getRemoteOrBestGuess("origin", "custom").then((r) => {
       expect(r).to.equal("custom2");
       done();
-    });
+    }).catch(done.fail);
   });
 });

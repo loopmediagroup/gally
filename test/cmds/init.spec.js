@@ -15,6 +15,6 @@ describe("Testing `init`", () => {
       expect(fs.existsSync(path.join(dir, ".gally.json"))).to.equal(true);
       process.chdir(cwd);
       done();
-    });
+    }).catch(done.fail);
   });
 });

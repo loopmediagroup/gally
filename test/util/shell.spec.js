@@ -6,7 +6,7 @@ describe("Testing shell.js", () => {
     shell.run("whoami").then((r) => {
       expect(typeof r).to.equal("string");
       done();
-    });
+    }).catch(done.fail);
   });
 
   it("Testing Reject", (done) => {

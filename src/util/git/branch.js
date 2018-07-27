@@ -6,8 +6,8 @@ const evaluate = (configBranches, remoteBranches) => {
   return {
     matched: remoteBranches.filter(rb => configBranches.indexOf(rb) !== -1),
     unexpected: remoteBranches.filter(rb => (
-      configBranches.indexOf(rb) === -1 &&
-      !partialLocalBranches.some(lb => rb.startsWith(lb))
+      configBranches.indexOf(rb) === -1
+      && !partialLocalBranches.some(lb => rb.startsWith(lb))
     )),
     missing: nonPartialBranches.filter(b => remoteBranches.indexOf(b) === -1)
   };
