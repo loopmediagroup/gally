@@ -26,15 +26,13 @@
   },
   "protection": {
     "$full-dev": {
-      "@": "$full",
-      "enforce_admins": false
+      "@": "$full"
     },
     "$full-master": {
       "@": "$full",
       "required_status_checks": {
         "strict": false
-      },
-      "enforce_admins": false
+      }
     },
     "$full": {
       "required_status_checks": {
