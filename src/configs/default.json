@@ -25,7 +25,7 @@
     "feat/*": {
       "upstream": "dev"
     },
-    "greenkeeper/*": {
+    "dependabot/*": {
       "upstream": "dev"
     }
   },
@@ -42,8 +42,7 @@
         "contexts": [
           "continuous-integration/circle-ci",
           "continuous-integration/travis-ci",
-          "coverage/coveralls",
-          "greenkeeper/verify"
+          "coverage/coveralls"
         ]
       },
       "enforce_admins": true,
