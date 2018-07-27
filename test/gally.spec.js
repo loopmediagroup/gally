@@ -3,7 +3,10 @@ const path = require('path');
 const expect = require('chai').expect;
 const inquirer = require('inquirer');
 const tmp = require('tmp');
+const ci = require('./../src/util/ci');
 const gally = require('./../src/gally');
+
+const isCiOriginal = ci.isCI;
 
 tmp.setGracefulCleanup();
 
@@ -13,6 +16,7 @@ describe("Testing Gally", () => {
   let promptCount = 0;
 
   before(() => {
+    ci.isCI = () => false;
     inquirerPrompt = inquirer.prompt;
     inquirer.prompt = () => {
       promptCount += 1;
@@ -25,6 +29,7 @@ describe("Testing Gally", () => {
   });
 
   after(() => {
+    ci.isCI = isCiOriginal;
     inquirer.prompt = inquirerPrompt;
     process.env.GH_TOKEN = ghToken;
   });

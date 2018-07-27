@@ -5,6 +5,7 @@ const set = require("lodash.set");
 const mergeWith = require("lodash.mergewith");
 const inquirer = require('inquirer');
 const json = require("./util/json");
+const ci = require("./util/ci");
 
 module.exports.load = async (configDir, cwd) => {
   if (!fs.existsSync(configDir)) {
@@ -17,7 +18,7 @@ module.exports.load = async (configDir, cwd) => {
   const globalConfig = json.loadOrDefault(globalConfigFile);
   const credentials = json.loadOrDefault(credentialsFile);
 
-  if (get(credentials, "github.token", process.env.GH_TOKEN) === undefined) {
+  if (get(credentials, "github.token", process.env.GH_TOKEN) === undefined && !ci.isCI()) {
     const token = (await inquirer.prompt([{
       type: 'password',
       message: 'Enter github personal access token',
