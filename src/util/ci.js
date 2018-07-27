@@ -1,4 +1,6 @@
-module.exports.isCI = () => process.env.CI !== undefined
-  || process.env.CONTINUOUS_INTEGRATION !== undefined
-  || process.env.BUILD_NUMBER !== undefined
-  || process.env.TRAVIS !== undefined;
+module.exports.isCI = () => [
+  "CI",
+  "CONTINUOUS_INTEGRATION",
+  "BUILD_NUMBER",
+  "TRAVIS"
+].some(v => process.env[v] !== undefined);
