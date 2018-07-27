@@ -35,6 +35,6 @@ describe("Testing `promote <branch>`", () => {
     promote.handler({}).then(() => {
       expect(logs).to.deep.equal(["URL"]);
       done();
-    });
+    }).catch(done.fail);
   });
 });

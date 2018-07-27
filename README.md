@@ -2,7 +2,6 @@
 
 [![Build Status](https://img.shields.io/travis/loopmediagroup/gally/master.svg)](https://travis-ci.org/loopmediagroup/gally)
 [![Test Coverage](https://img.shields.io/coveralls/loopmediagroup/gally/master.svg)](https://coveralls.io/github/loopmediagroup/gally?branch=master)
-[![Greenkeeper Badge](https://badges.greenkeeper.io/loopmediagroup/gally.svg)](https://greenkeeper.io/)
 [![Dependencies](https://david-dm.org/loopmediagroup/gally/status.svg)](https://david-dm.org/loopmediagroup/gally)
 [![NPM](https://img.shields.io/npm/v/gally.svg)](https://www.npmjs.com/package/gally)
 [![Downloads](https://img.shields.io/npm/dt/gally.svg)](https://www.npmjs.com/package/gally)
@@ -77,6 +76,8 @@ Create PR from `upstream/INPUT_BRANCH` to "upstream" branch `upstream/BRANCH` wi
 where the upstream branch is defined in the configuration file under "upstream".
 
 You can define a custom remote if so desired.
+
+When an unknown branch or a branch without an upstream is defined, a warning is printed. This makes is easier to use to create automatic staging prs using CI.
 
 ### init
 

@@ -35,6 +35,6 @@ describe("Testing `pr [branch]`", () => {
     pr.handler({}).then(() => {
       expect(urls).to.deep.equal(['URL']);
       done();
-    });
+    }).catch(done.fail);
   });
 });

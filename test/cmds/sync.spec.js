@@ -23,6 +23,6 @@ describe("Testing `sync <remote>`", () => {
     sync.handler({}).then((r) => {
       expect(r).to.deep.equal({});
       done();
-    });
+    }).catch(done.fail);
   });
 });

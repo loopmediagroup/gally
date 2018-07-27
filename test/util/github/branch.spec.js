@@ -1,8 +1,8 @@
 const path = require("path");
 const expect = require('chai').expect;
+const nockBack = require('nock').back;
 const branch = require("./../../../src/util/github/branch");
 const request = require("./../../../src/util/github/request");
-const nockBack = require('nock').back;
 
 describe("Testing branch", () => {
   before(() => {
@@ -22,7 +22,7 @@ describe("Testing branch", () => {
         expect(r).to.equal(true);
         nockDone();
         done();
-      });
+      }).catch(done.fail);
     });
   });
 
@@ -53,7 +53,7 @@ describe("Testing branch", () => {
         expect(r).to.equal(true);
         nockDone();
         done();
-      });
+      }).catch(done.fail);
     });
   });
 
@@ -65,7 +65,7 @@ describe("Testing branch", () => {
         expect(r).to.equal(true);
         nockDone();
         done();
-      });
+      }).catch(done.fail);
     });
   });
 
@@ -77,7 +77,7 @@ describe("Testing branch", () => {
         expect(r).to.deep.equal(['dev', 'stage', 'master']);
         nockDone();
         done();
-      });
+      }).catch(done.fail);
     });
   });
 });
