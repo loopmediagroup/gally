@@ -1,7 +1,7 @@
 const path = require("path");
 const expect = require('chai').expect;
-const request = require("./../../../src/util/github/request");
 const nockBack = require('nock').back;
+const request = require("./../../../src/util/github/request");
 
 describe("Testing request", () => {
   before(() => {
@@ -27,8 +27,8 @@ describe("Testing request", () => {
           expect(respCached.statusCode).to.equal(200);
           nockDone();
           done();
-        });
-      });
+        }).catch(done.fail);
+      }).catch(done.fail);
     });
   });
 });

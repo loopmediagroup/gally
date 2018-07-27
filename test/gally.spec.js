@@ -39,7 +39,7 @@ describe("Testing Gally", () => {
       expect(promptCount).to.equal(1);
       expect(cfg.config.local).to.equal(null);
       done();
-    });
+    }).catch(done.fail);
   });
 
   it("Testing load", (done) => {
@@ -110,7 +110,7 @@ describe("Testing Gally", () => {
         expect(cfg2).to.deep.equal(config);
         expect(promptCount).to.equal(1);
         done();
-      });
-    });
+      }).catch(done.fail);
+    }).catch(done.fail);
   });
 });
