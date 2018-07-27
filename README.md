@@ -77,6 +77,8 @@ where the upstream branch is defined in the configuration file under "upstream".
 
 You can define a custom remote if so desired.
 
+When an unknown branch or a branch without an upstream is defined, a warning is printed. This makes is easier to use to create automatic staging prs using CI.
+
 ### init
 
 Create a new `.gally.json` file by running
