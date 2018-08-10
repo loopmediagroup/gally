@@ -21,7 +21,7 @@ Git-Ally - Automation around Github.com Repository Management
 You will be prompted to enter a personal github token that will then be stored as plain text on disk.
 
 If an environment variable `GH_TOKEN` is present and credentials are not set, 
-the environment variable is used and no prompt is displayed.
+the environment variable is used and no prompt is displayed. Will never prompt if running in CI.
 
 ## Contents of `.gally.json`
 
