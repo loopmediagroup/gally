@@ -31,7 +31,7 @@
     "js-gardener": "1.31.1",
     "nock": "9.6.1",
     "nyc": "12.0.2",
-    "semantic-release": "15.9.8",
+    "semantic-release": "15.9.9",
     "tmp": "0.0.33",
     "babel-register": "7.0.0-beta.3",
     "babel-eslint": "8.2.6",
