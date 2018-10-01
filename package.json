@@ -34,7 +34,7 @@
     "semantic-release": "15.9.15",
     "tmp": "0.0.33",
     "babel-register": "7.0.0-beta.3",
-    "babel-eslint": "9.0.0",
+    "babel-eslint": "10.0.1",
     "babel-plugin-transform-flow-comments": "7.0.0-beta.3",
     "babel-preset-flow": "7.0.0-beta.3"
   },
