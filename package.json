@@ -28,10 +28,10 @@
     "babel-cli": "7.0.0-beta.3",
     "chai": "4.2.0",
     "coveralls": "3.0.2",
-    "js-gardener": "1.31.7",
+    "js-gardener": "1.31.9",
     "nock": "10.0.1",
     "nyc": "13.1.0",
-    "semantic-release": "15.10.5",
+    "semantic-release": "15.10.6",
     "tmp": "0.0.33",
     "babel-register": "7.0.0-beta.3",
     "babel-eslint": "10.0.1",
@@ -39,7 +39,7 @@
     "babel-preset-flow": "7.0.0-beta.3"
   },
   "nyc": {
-    "tempDirectory": "./coverage/.nyc_output",
+    "tempDir": "./coverage/.nyc_output",
     "report-dir": "./coverage",
     "check-coverage": true,
     "per-file": false,
