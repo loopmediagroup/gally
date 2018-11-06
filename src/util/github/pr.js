@@ -1,4 +1,4 @@
-const request = require("./../github/request");
+const request = require('./../github/request');
 
 const create = (source, target, repoKey, token) => request.post(
   `https://api.github.com/repos/${repoKey}/pulls`,
@@ -9,7 +9,7 @@ const create = (source, target, repoKey, token) => request.post(
       head: source,
       base: target,
       maintainer_can_modify: false,
-      body: "Automatically created by Git-Ally"
+      body: 'Automatically created by Git-Ally'
     }
   }
 );

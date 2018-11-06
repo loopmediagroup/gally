@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
-const logger = require("./../../src/util/logger");
+const logger = require('./../../src/util/logger');
 
-describe("Testing logger.js", () => {
+describe('Testing logger.js', () => {
   let consoleWarn;
   const logs = [];
 
@@ -21,8 +21,8 @@ describe("Testing logger.js", () => {
     logs.length = 0;
   });
 
-  it("Testing logger.warn", () => {
-    logger.warn("test");
-    expect(logs).to.deep.equal(["test"]);
+  it('Testing logger.warn', () => {
+    logger.warn('test');
+    expect(logs).to.deep.equal(['test']);
   });
 });

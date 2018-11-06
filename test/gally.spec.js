@@ -10,7 +10,7 @@ const isCiOriginal = ci.isCI;
 
 tmp.setGracefulCleanup();
 
-describe("Testing Gally", () => {
+describe('Testing Gally', () => {
   let ghToken;
   let inquirerPrompt;
   let promptCount = 0;
@@ -21,7 +21,7 @@ describe("Testing Gally", () => {
     inquirer.prompt = () => {
       promptCount += 1;
       return {
-        token: "token"
+        token: 'token'
       };
     };
     ghToken = process.env.GH_TOKEN;
@@ -38,7 +38,7 @@ describe("Testing Gally", () => {
     promptCount = 0;
   });
 
-  it("Test Empty Local Config", (done) => {
+  it('Test Empty Local Config', (done) => {
     const dir = tmp.dirSync({ keep: false, unsafeCleanup: true }).name;
     gally.load(`${dir}/$HOME.gally`, dir).then((cfg) => {
       expect(promptCount).to.equal(1);
@@ -47,34 +47,34 @@ describe("Testing Gally", () => {
     }).catch(done.fail);
   });
 
-  it("Testing load", (done) => {
+  it('Testing load', (done) => {
     const dir = tmp.dirSync({ keep: false, unsafeCleanup: true }).name;
     const localConfig = {
       protection: {
         $child2: {
-          "@": "$parent",
+          '@': '$parent',
           field: {
-            prop1: "child2",
+            prop1: 'child2',
             prop3: []
           }
         },
         $child1: {
-          "@": "$parent",
+          '@': '$parent',
           field: {
-            prop1: "child1",
+            prop1: 'child1',
             prop3: []
           }
         },
         $parent: {
           field: {
-            prop1: "parent1",
-            prop2: "parent2",
-            prop3: ["parent3"]
+            prop1: 'parent1',
+            prop2: 'parent2',
+            prop3: ['parent3']
           }
         }
       }
     };
-    fs.writeFileSync(path.join(dir, ".gally.json"), JSON.stringify(localConfig));
+    fs.writeFileSync(path.join(dir, '.gally.json'), JSON.stringify(localConfig));
     const config = {
       config: {
         global: {},
@@ -82,23 +82,23 @@ describe("Testing Gally", () => {
           protection: {
             $child2: {
               field: {
-                prop1: "child2",
-                prop2: "parent2",
+                prop1: 'child2',
+                prop2: 'parent2',
                 prop3: []
               }
             },
             $child1: {
               field: {
-                prop1: "child1",
-                prop2: "parent2",
+                prop1: 'child1',
+                prop2: 'parent2',
                 prop3: []
               }
             },
             $parent: {
               field: {
-                prop1: "parent1",
-                prop2: "parent2",
-                prop3: ["parent3"]
+                prop1: 'parent1',
+                prop2: 'parent2',
+                prop3: ['parent3']
               }
             }
           }
