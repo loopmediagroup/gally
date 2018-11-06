@@ -1,3 +1,3 @@
-const opn = require("opn");
+const opn = require('opn');
 
 module.exports.url = opn;

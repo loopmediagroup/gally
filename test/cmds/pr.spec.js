@@ -1,10 +1,10 @@
 const expect = require('chai').expect;
-const open = require("./../../src/util/open");
-const pr = require("./../../src/cmds/pr");
-const gally = require("./../../src/gally");
-const git = require("./../../src/util/git");
+const open = require('./../../src/util/open');
+const pr = require('./../../src/cmds/pr');
+const gally = require('./../../src/gally');
+const git = require('./../../src/util/git');
 
-describe("Testing `pr [branch]`", () => {
+describe('Testing `pr [branch]`', () => {
   let gallyLoad;
   const urls = [];
   let gitGhPrUrl;
@@ -14,7 +14,7 @@ describe("Testing `pr [branch]`", () => {
     gallyLoad = gally.load;
     gally.load = () => Promise.resolve({});
     gitGhPrUrl = git.ghPrUrl;
-    git.ghPrUrl = () => Promise.resolve("URL");
+    git.ghPrUrl = () => Promise.resolve('URL');
     openUrl = open.url;
     open.url = (url) => {
       urls.push(url);
@@ -31,7 +31,7 @@ describe("Testing `pr [branch]`", () => {
     urls.length = 0;
   });
 
-  it("Testing pr (Integration)", (done) => {
+  it('Testing pr (Integration)', (done) => {
     pr.handler({}).then(() => {
       expect(urls).to.deep.equal(['URL']);
       done();

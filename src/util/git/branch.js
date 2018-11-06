@@ -1,7 +1,7 @@
 const evaluate = (configBranches, remoteBranches) => {
-  const nonPartialBranches = configBranches.filter(lb => !lb.endsWith("*"));
+  const nonPartialBranches = configBranches.filter(lb => !lb.endsWith('*'));
   const partialLocalBranches = configBranches
-    .filter(lb => lb.endsWith("*"))
+    .filter(lb => lb.endsWith('*'))
     .map(lb => lb.slice(0, -1));
   return {
     matched: remoteBranches.filter(rb => configBranches.indexOf(rb) !== -1),
