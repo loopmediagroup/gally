@@ -1,4 +1,4 @@
-const request = require("./../github/request");
+const request = require('./../github/request');
 
 const list = async (repoKey, token) => {
   const result = await request.get(
