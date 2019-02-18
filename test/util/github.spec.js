@@ -255,4 +255,28 @@ describe('Testing github', () => {
       }).catch(done.fail);
     });
   }).timeout(60000);
+
+  it('Testing approvePr condition mismatch', (done) => {
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    nockBack('github-approvePr-condition-mismatch.json', {}, (nockDone) => {
+      github.approvePr(config, undefined, 123, "unknown=key").then((r) => {
+        expect(logs).to.deep.equal([]);
+        expect(r).to.deep.equal('skipping: condition mismatch');
+        nockDone();
+        done();
+      }).catch(done.fail);
+    });
+  }).timeout(60000);
+
+  it('Testing mergePr condition mismatch', (done) => {
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    nockBack('github-mergePr-condition-mismatch.json', {}, (nockDone) => {
+      github.mergePr(config, undefined, 123, "unknown=key").then((r) => {
+        expect(logs).to.deep.equal([]);
+        expect(r).to.deep.equal('skipping: condition mismatch');
+        nockDone();
+        done();
+      }).catch(done.fail);
+    });
+  }).timeout(60000);
 });
