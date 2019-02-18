@@ -13,6 +13,8 @@ const getRepoKey = async (config, remote = undefined) => {
   return remoteUrl.slice(0, -4).split('/').slice(-2).join('/');
 };
 
+const renderError = r => `${r.statusCode}: ${get(r, 'body.message') || get(r, 'body.errors')}`;
+
 const promoteBranch = async (config, remote, branch) => {
   const repoKey = await getRepoKey(config, remote);
   const upstreamBranch = get(config.config.local.branches[branch], 'upstream');
@@ -26,7 +28,7 @@ const promoteBranch = async (config, remote, branch) => {
   if (get(result, 'body.errors[0].message', '').startsWith('A pull request already exists for ')) {
     return `https://github.com/${repoKey}/pulls`;
   }
-  return `${result.statusCode}: ${get(result, 'body.message')}`;
+  return renderError(result);
 };
 module.exports.promoteBranch = promoteBranch;
 
@@ -40,7 +42,7 @@ const approvePr = async (config, remote, prId, condition) => {
   if (result.statusCode === 200) {
     return 'ok';
   }
-  return `${result.statusCode}: ${get(result, 'body.errors')}`;
+  return renderError(result);
 };
 module.exports.approvePr = approvePr;
 
@@ -54,7 +56,7 @@ const mergePr = async (config, remote, prId, condition) => {
   if (result.statusCode === 200) {
     return 'ok';
   }
-  return `${result.statusCode}: ${get(result, 'body.message')}`;
+  return renderError(result);
 };
 module.exports.mergePr = mergePr;
 

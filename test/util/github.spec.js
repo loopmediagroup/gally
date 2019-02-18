@@ -231,4 +231,28 @@ describe('Testing github', () => {
       }).catch(done.fail);
     });
   }).timeout(60000);
+
+  it('Testing approvePr 401 Error', (done) => {
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    nockBack('github-approvePr-401-error.json', {}, (nockDone) => {
+      github.approvePr(config, undefined, 123).then((r) => {
+        expect(logs).to.deep.equal([]);
+        expect(r).to.deep.equal('401: Bad credentials');
+        nockDone();
+        done();
+      }).catch(done.fail);
+    });
+  }).timeout(60000);
+
+  it('Testing mergePr 401 Error', (done) => {
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    nockBack('github-mergePr-401-error.json', {}, (nockDone) => {
+      github.mergePr(config, undefined, 123).then((r) => {
+        expect(logs).to.deep.equal([]);
+        expect(r).to.deep.equal('401: Bad credentials');
+        nockDone();
+        done();
+      }).catch(done.fail);
+    });
+  }).timeout(60000);
 });
