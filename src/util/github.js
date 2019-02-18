@@ -34,7 +34,7 @@ const approvePr = async (config, remote, prId, condition) => {
   const repoKey = await getRepoKey(config, remote);
   const token = getToken(config);
   if (!await githubPr.check(repoKey, prId, token, condition)) {
-    return "skipping: condition mismatch";
+    return 'skipping: condition mismatch';
   }
   const result = await githubPr.approve(repoKey, prId, token);
   if (result.statusCode === 200) {
@@ -48,7 +48,7 @@ const mergePr = async (config, remote, prId, condition) => {
   const repoKey = await getRepoKey(config, remote);
   const token = getToken(config);
   if (!await githubPr.check(repoKey, prId, token, condition)) {
-    return "skipping: condition mismatch";
+    return 'skipping: condition mismatch';
   }
   const result = await githubPr.merge(repoKey, prId, token);
   if (result.statusCode === 200) {
