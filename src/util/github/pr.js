@@ -1,3 +1,4 @@
+const querystring = require('querystring');
 const get = require('lodash.get');
 const request = require('./../github/request');
 
@@ -44,3 +45,13 @@ const merge = async (repoKey, prId, token) => {
   );
 };
 module.exports.merge = merge;
+
+const check = async (repoKey, prId, token, condition) => {
+  const conditionParsed = Object.entries(querystring.parse(condition));
+  if (conditionParsed.length === 0) {
+    return true;
+  }
+  const prInfo = (await request.get(`https://api.github.com/repos/${repoKey}/pulls/${prId}`, token)).body;
+  return conditionParsed.every(([k, v]) => String(get(prInfo, k)) === v);
+};
+module.exports.check = check;

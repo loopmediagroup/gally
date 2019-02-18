@@ -68,7 +68,7 @@ Open PR Url from `origin/CURRNET_BRANCH` to remote `upstream/TARGET_BRANCH` with
 
 where `branch` is the target branch (defaults to dev).
 
-### approve [remote] \<prId\>
+### approve [remote] \<prId\> [condition]
 
 Approve PR. The remote defaults to upstream for
 
@@ -76,13 +76,21 @@ Approve PR. The remote defaults to upstream for
 
 Can define a custom remote if so desired.
 
-### merge [remote] \<prId\>
+Condition is a url encoded string that is checked against the 
+[branch information](https://developer.github.com/v3/pulls/#get-a-single-pull-request). E.g. to only
+apply to prs that target a the dev branch and are open, one would use
+
+    $ ga approve <prId> --condition "base.ref=dev&state=open" 
+
+### merge [remote] \<prId\> [condition]
 
 Merge PR. The remote defaults to upstream for
 
     $ ga merge <prId>
 
 Can define a custom remote if so desired.
+
+See `approve` cmd for condition information.
 
 ### promote [remote] \<branch\>
 

@@ -30,9 +30,13 @@ const promoteBranch = async (config, remote, branch) => {
 };
 module.exports.promoteBranch = promoteBranch;
 
-const approvePr = async (config, remote, prId) => {
+const approvePr = async (config, remote, prId, condition) => {
   const repoKey = await getRepoKey(config, remote);
-  const result = await githubPr.approve(repoKey, prId, getToken(config));
+  const token = getToken(config);
+  if (!await githubPr.check(repoKey, prId, token, condition)) {
+    return "skipping: condition mismatch";
+  }
+  const result = await githubPr.approve(repoKey, prId, token);
   if (result.statusCode === 200) {
     return 'ok';
   }
@@ -40,9 +44,13 @@ const approvePr = async (config, remote, prId) => {
 };
 module.exports.approvePr = approvePr;
 
-const mergePr = async (config, remote, prId) => {
+const mergePr = async (config, remote, prId, condition) => {
   const repoKey = await getRepoKey(config, remote);
-  const result = await githubPr.merge(repoKey, prId, getToken(config));
+  const token = getToken(config);
+  if (!await githubPr.check(repoKey, prId, token, condition)) {
+    return "skipping: condition mismatch";
+  }
+  const result = await githubPr.merge(repoKey, prId, token);
   if (result.statusCode === 200) {
     return 'ok';
   }
