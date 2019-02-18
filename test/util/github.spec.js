@@ -259,7 +259,7 @@ describe('Testing github', () => {
   it('Testing approvePr condition mismatch', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
     nockBack('github-approvePr-condition-mismatch.json', {}, (nockDone) => {
-      github.approvePr(config, undefined, 123, "unknown=key").then((r) => {
+      github.approvePr(config, undefined, 123, 'unknown=key').then((r) => {
         expect(logs).to.deep.equal([]);
         expect(r).to.deep.equal('skipping: condition mismatch');
         nockDone();
@@ -271,9 +271,57 @@ describe('Testing github', () => {
   it('Testing mergePr condition mismatch', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
     nockBack('github-mergePr-condition-mismatch.json', {}, (nockDone) => {
-      github.mergePr(config, undefined, 123, "unknown=key").then((r) => {
+      github.mergePr(config, undefined, 123, 'unknown=key').then((r) => {
         expect(logs).to.deep.equal([]);
         expect(r).to.deep.equal('skipping: condition mismatch');
+        nockDone();
+        done();
+      }).catch(done.fail);
+    });
+  }).timeout(60000);
+
+  it('Testing approvePr ok', (done) => {
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    nockBack('github-approvePr-ok.json', {}, (nockDone) => {
+      github.approvePr(config, undefined, 46).then((r) => {
+        expect(logs).to.deep.equal([]);
+        expect(r).to.deep.equal('ok');
+        nockDone();
+        done();
+      }).catch(done.fail);
+    });
+  }).timeout(60000);
+
+  it('Testing mergePr ok', (done) => {
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    nockBack('github-mergePr-ok.json', {}, (nockDone) => {
+      github.mergePr(config, undefined, 46).then((r) => {
+        expect(logs).to.deep.equal([]);
+        expect(r).to.deep.equal('ok');
+        nockDone();
+        done();
+      }).catch(done.fail);
+    });
+  }).timeout(60000);
+
+  it('Testing approvePr denied', (done) => {
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    nockBack('github-approvePr-denied.json', {}, (nockDone) => {
+      github.approvePr(config, undefined, 46).then((r) => {
+        expect(logs).to.deep.equal([]);
+        expect(r).to.deep.equal('422: Unprocessable Entity\nCan only approve open pull requests');
+        nockDone();
+        done();
+      }).catch(done.fail);
+    });
+  }).timeout(60000);
+
+  it('Testing mergePr denied', (done) => {
+    const config = JSON.parse(JSON.stringify(configTemplate));
+    nockBack('github-mergePr-denied.json', {}, (nockDone) => {
+      github.mergePr(config, undefined, 46).then((r) => {
+        expect(logs).to.deep.equal([]);
+        expect(r).to.deep.equal('405: Pull Request is not mergeable');
         nockDone();
         done();
       }).catch(done.fail);

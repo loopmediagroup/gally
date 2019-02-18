@@ -13,7 +13,10 @@ const getRepoKey = async (config, remote = undefined) => {
   return remoteUrl.slice(0, -4).split('/').slice(-2).join('/');
 };
 
-const renderError = r => `${r.statusCode}: ${get(r, 'body.message') || get(r, 'body.errors')}`;
+const renderError = r => `${r.statusCode}: ${[
+  get(r, 'body.message'),
+  get(r, 'body.errors')
+].filter(e => !!e).join('\n')}`;
 
 const promoteBranch = async (config, remote, branch) => {
   const repoKey = await getRepoKey(config, remote);
