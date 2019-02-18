@@ -76,6 +76,14 @@ Approve PR. The remote defaults to upstream for
 
 Can define a custom remote if so desired.
 
+### merge [remote] \<prId\>
+
+Merge PR. The remote defaults to upstream for
+
+    $ ga merge <prId>
+
+Can define a custom remote if so desired.
+
 ### promote [remote] \<branch\>
 
 Create PR from `upstream/INPUT_BRANCH` to "upstream" branch `upstream/BRANCH` with

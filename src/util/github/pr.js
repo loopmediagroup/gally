@@ -1,3 +1,4 @@
+const get = require('lodash.get');
 const request = require('./../github/request');
 
 const create = (source, target, repoKey, token) => request.post(
@@ -20,9 +21,26 @@ const approve = (repoKey, prId, token) => request.post(
   token,
   {
     body: {
-      event: 'APPROVE',
-      body: '[Gally]: Approved'
+      event: 'APPROVE'
     }
   }
 );
 module.exports.approve = approve;
+
+const merge = async (repoKey, prId, token) => {
+  const prInfo = await request.get(`https://api.github.com/repos/${repoKey}/pulls/${prId}`, token);
+  const sha = get(prInfo, 'head.sha');
+  return request.put(
+    `https://api.github.com/repos/${repoKey}/pulls/${prId}/merge`,
+    token,
+    {
+      body: {
+        commit_title: '[Gally]: Merged',
+        commit_message: '',
+        sha,
+        merge_method: 'merge'
+      }
+    }
+  );
+};
+module.exports.merge = merge;
