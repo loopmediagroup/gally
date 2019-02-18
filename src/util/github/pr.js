@@ -14,3 +14,15 @@ const create = (source, target, repoKey, token) => request.post(
   }
 );
 module.exports.create = create;
+
+const approve = (repoKey, prId, token) => request.post(
+  `https://api.github.com/repos/${repoKey}/pulls/${prId}/reviews`,
+  token,
+  {
+    body: {
+      event: 'APPROVE',
+      body: '[Gally]: Approved'
+    }
+  }
+);
+module.exports.approve = approve;

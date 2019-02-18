@@ -30,6 +30,16 @@ const promoteBranch = async (config, remote, branch) => {
 };
 module.exports.promoteBranch = promoteBranch;
 
+const approvePr = async (config, remote, prId) => {
+  const repoKey = await getRepoKey(config, remote);
+  const result = await githubPr.approve(repoKey, prId, getToken(config));
+  if (result.statusCode === 200) {
+    return 'ok';
+  }
+  return `${result.statusCode}: ${get(result, 'body.errors')}`;
+};
+module.exports.approvePr = approvePr;
+
 const evaluate = async (config, remote = undefined) => {
   if (config.config.local === null) {
     throw new Error('Missing ".gally.json". Please run "gally init."');
