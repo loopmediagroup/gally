@@ -65,9 +65,7 @@ describe('Testing github', () => {
     };
   });
 
-  // eslint-disable-next-line func-names
-  it('Testing evaluate (missing local config)', function (done) {
-    this.timeout(60000);
+  it('Testing evaluate (missing local config)', (done) => {
     nockBack('github-evaluate-missing-local-config.json', {}, (nockDone) => {
       github.evaluate({ config: { local: null } }, 'upstream').catch((e) => {
         expect(logs).to.deep.equal([]);
@@ -76,11 +74,9 @@ describe('Testing github', () => {
         done();
       });
     });
-  });
+  }).timeout(60000);
 
-  // eslint-disable-next-line func-names
-  it('Testing evaluate (incorrect default branch)', function (done) {
-    this.timeout(60000);
+  it('Testing evaluate (incorrect default branch)', (done) => {
     nockBack('github-evaluate-incorrect-default-branch.json', {}, (nockDone) => {
       github.evaluate({
         config: {
@@ -97,11 +93,9 @@ describe('Testing github', () => {
         done();
       });
     });
-  });
+  }).timeout(60000);
 
-  // eslint-disable-next-line func-names
-  it('Testing evaluate (unexpected branch)', function (done) {
-    this.timeout(60000);
+  it('Testing evaluate (unexpected branch)', (done) => {
     nockBack('github-evaluate-unexpected-branch.json', {}, (nockDone) => {
       github.evaluate({
         config: {
@@ -119,11 +113,9 @@ describe('Testing github', () => {
         done();
       });
     });
-  });
+  }).timeout(60000);
 
-  // eslint-disable-next-line func-names
-  it('Testing evaluate (create failure)', function (done) {
-    this.timeout(60000);
+  it('Testing evaluate (create failure)', (done) => {
     nockBack('github-evaluate-create-failure.json', {}, (nockDone) => {
       github.evaluate(configTemplate, 'upstream').catch((e) => {
         expect(logs).to.deep.equal([`Creating Branches: ${chalk.green('dev')}`]);
@@ -132,11 +124,9 @@ describe('Testing github', () => {
         done();
       });
     });
-  });
+  }).timeout(60000);
 
-  // eslint-disable-next-line func-names
-  it('Testing evaluate (sync failure)', function (done) {
-    this.timeout(60000);
+  it('Testing evaluate (sync failure)', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
     set(config, 'config.local.branches.dev.protection', null);
     nockBack('github-evaluate-sync-failure.json', {}, (nockDone) => {
@@ -149,11 +139,9 @@ describe('Testing github', () => {
         done();
       });
     });
-  });
+  }).timeout(60000);
 
-  // eslint-disable-next-line func-names
-  it('Testing evaluate (create and sync)', function (done) {
-    this.timeout(60000);
+  it('Testing evaluate (create and sync)', (done) => {
     nockBack('github-evaluate-create-and-sync.json', {}, (nockDone) => {
       github.evaluate(configTemplate, 'upstream').then((r) => {
         expect(logs).to.deep.equal([
@@ -167,11 +155,9 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  });
+  }).timeout(60000);
 
-  // eslint-disable-next-line func-names
-  it('Testing evaluate (sync only)', function (done) {
-    this.timeout(60000);
+  it('Testing evaluate (sync only)', (done) => {
     nockBack('github-evaluate-sync-only.json', {}, (nockDone) => {
       github.evaluate(configTemplate, 'upstream').then((r) => {
         expect(logs).to.deep.equal([
@@ -183,11 +169,9 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  });
+  }).timeout(60000);
 
-  // eslint-disable-next-line func-names
-  it('Testing evaluate (sync only unprotected)', function (done) {
-    this.timeout(60000);
+  it('Testing evaluate (sync only unprotected)', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
     set(config, 'config.local.branches.dev.protection', null);
     nockBack('github-evaluate-sync-only-unprotected.json', {}, (nockDone) => {
@@ -201,11 +185,9 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  });
+  }).timeout(60000);
 
-  // eslint-disable-next-line func-names
-  it('Testing promoteBranch Pr Created', function (done) {
-    this.timeout(60000);
+  it('Testing promoteBranch Pr Created', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
     nockBack('github-promoteBranch-pr-created.json', {}, (nockDone) => {
       github.promoteBranch(config, undefined, 'dev').then((r) => {
@@ -215,7 +197,7 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  });
+  }).timeout(60000);
 
   it('Testing promoteBranch Missing Upstream', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
@@ -226,9 +208,7 @@ describe('Testing github', () => {
     }).catch(done.fail);
   });
 
-  // eslint-disable-next-line func-names
-  it('Testing promoteBranch Pr Exists', function (done) {
-    this.timeout(60000);
+  it('Testing promoteBranch Pr Exists', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
     nockBack('github-promoteBranch-pr-exists.json', {}, (nockDone) => {
       github.promoteBranch(config, undefined, 'dev').then((r) => {
@@ -238,11 +218,9 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  });
+  }).timeout(60000);
 
-  // eslint-disable-next-line func-names
-  it('Testing promoteBranch 401 Error', function (done) {
-    this.timeout(60000);
+  it('Testing promoteBranch 401 Error', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
     nockBack('github-promoteBranch-401-error.json', {}, (nockDone) => {
       github.promoteBranch(config, undefined, 'dev').then((r) => {
@@ -252,5 +230,5 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  });
+  }).timeout(60000);
 });

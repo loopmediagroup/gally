@@ -14,9 +14,7 @@ describe('Testing branch', () => {
     request.flushCache();
   });
 
-  // eslint-disable-next-line func-names
-  it('Testing create', function (done) {
-    this.timeout(60000);
+  it('Testing create', (done) => {
     nockBack('branch-create.json', {}, (nockDone) => {
       branch.create('dev', 'loopmediagroup/gally', '--secret-token--').then((r) => {
         expect(r).to.equal(true);
@@ -24,11 +22,9 @@ describe('Testing branch', () => {
         done();
       }).catch(done.fail);
     });
-  });
+  }).timeout(60000);
 
-  // eslint-disable-next-line func-names
-  it('Testing updateProtection (create)', function (done) {
-    this.timeout(60000);
+  it('Testing updateProtection (create)', (done) => {
     nockBack('branch-updateProtection-create.json', {}, (nockDone) => {
       branch.updateProtection('custom', {
         required_status_checks: {
@@ -55,11 +51,9 @@ describe('Testing branch', () => {
         done();
       }).catch(done.fail);
     });
-  });
+  }).timeout(60000);
 
-  // eslint-disable-next-line func-names
-  it('Testing updateProtection (delete)', function (done) {
-    this.timeout(60000);
+  it('Testing updateProtection (delete)', (done) => {
     nockBack('branch-updateProtection-delete.json', {}, (nockDone) => {
       branch.updateProtection('custom', null, 'loopmediagroup/gally', '--secret-token--').then((r) => {
         expect(r).to.equal(true);
@@ -67,11 +61,9 @@ describe('Testing branch', () => {
         done();
       }).catch(done.fail);
     });
-  });
+  }).timeout(60000);
 
-  // eslint-disable-next-line func-names
-  it('Testing list', function (done) {
-    this.timeout(60000);
+  it('Testing list', (done) => {
     nockBack('branch-list.json', {}, (nockDone) => {
       branch.list('loopmediagroup/gally', '--secret-token--').then((r) => {
         expect(r).to.deep.equal(['dev', 'stage', 'master']);
@@ -79,5 +71,5 @@ describe('Testing branch', () => {
         done();
       }).catch(done.fail);
     });
-  });
+  }).timeout(60000);
 });
