@@ -1,0 +1,11 @@
+[
+    {
+        "scope": "https://api.github.com:443",
+        "method": "POST",
+        "path": "/repos/loopmediagroup/gally/pulls/46/reviews",
+        "body": {
+            "event": "APPROVE"
+        },
+        "status": 200
+    }
+]
