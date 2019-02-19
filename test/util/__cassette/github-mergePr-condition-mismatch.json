@@ -1,0 +1,13 @@
+[
+    {
+        "scope": "https://api.github.com:443",
+        "method": "GET",
+        "path": "/repos/loopmediagroup/gally/pulls/123",
+        "body": "",
+        "status": 401,
+        "response": {
+            "message": "Bad credentials",
+            "documentation_url": "https://developer.github.com/v3"
+        }
+    }
+]

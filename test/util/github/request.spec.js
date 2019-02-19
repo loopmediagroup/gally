@@ -9,9 +9,7 @@ describe('Testing request', () => {
     nockBack.fixtures = path.join(__dirname, '__cassette');
   });
 
-  // eslint-disable-next-line func-names
-  it('Testing get (cached)', function (done) {
-    this.timeout(60000);
+  it('Testing get (cached)', (done) => {
     nockBack('request-get-cached.json', {}, (nockDone) => {
       request.get(
         'https://api.github.com/repos/loopmediagroup/gally',
@@ -30,5 +28,5 @@ describe('Testing request', () => {
         }).catch(done.fail);
       }).catch(done.fail);
     });
-  });
+  }).timeout(60000);
 });

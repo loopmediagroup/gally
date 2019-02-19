@@ -13,6 +13,11 @@ const getRepoKey = async (config, remote = undefined) => {
   return remoteUrl.slice(0, -4).split('/').slice(-2).join('/');
 };
 
+const renderError = r => `${r.statusCode}: ${[
+  get(r, 'body.message'),
+  get(r, 'body.errors')
+].filter(e => !!e).join('\n')}`;
+
 const promoteBranch = async (config, remote, branch) => {
   const repoKey = await getRepoKey(config, remote);
   const upstreamBranch = get(config.config.local.branches[branch], 'upstream');
@@ -26,9 +31,37 @@ const promoteBranch = async (config, remote, branch) => {
   if (get(result, 'body.errors[0].message', '').startsWith('A pull request already exists for ')) {
     return `https://github.com/${repoKey}/pulls`;
   }
-  return `${result.statusCode}: ${get(result, 'body.message')}`;
+  return renderError(result);
 };
 module.exports.promoteBranch = promoteBranch;
+
+const approvePr = async (config, remote, prId, condition) => {
+  const repoKey = await getRepoKey(config, remote);
+  const token = getToken(config);
+  if (!await githubPr.check(repoKey, prId, token, condition)) {
+    return 'skipping: condition mismatch';
+  }
+  const result = await githubPr.approve(repoKey, prId, token);
+  if (result.statusCode === 200) {
+    return 'ok';
+  }
+  return renderError(result);
+};
+module.exports.approvePr = approvePr;
+
+const mergePr = async (config, remote, prId, condition) => {
+  const repoKey = await getRepoKey(config, remote);
+  const token = getToken(config);
+  if (!await githubPr.check(repoKey, prId, token, condition)) {
+    return 'skipping: condition mismatch';
+  }
+  const result = await githubPr.merge(repoKey, prId, token);
+  if (result.statusCode === 200) {
+    return 'ok';
+  }
+  return renderError(result);
+};
+module.exports.mergePr = mergePr;
 
 const evaluate = async (config, remote = undefined) => {
   if (config.config.local === null) {

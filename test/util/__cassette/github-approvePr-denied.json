@@ -1,0 +1,18 @@
+[
+    {
+        "scope": "https://api.github.com:443",
+        "method": "POST",
+        "path": "/repos/loopmediagroup/gally/pulls/46/reviews",
+        "body": {
+            "event": "APPROVE"
+        },
+        "status": 422,
+        "response": {
+            "message": "Unprocessable Entity",
+            "errors": [
+                "Can only approve open pull requests"
+            ],
+            "documentation_url": "https://developer.github.com/v3/pulls/reviews/#create-a-pull-request-review"
+        }
+    }
+]

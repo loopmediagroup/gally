@@ -1,0 +1,30 @@
+[
+    {
+        "scope": "https://api.github.com:443",
+        "method": "GET",
+        "path": "/repos/loopmediagroup/gally/pulls/46",
+        "body": "",
+        "status": 200,
+        "response": {
+            "head": {
+              "sha": "0123456789abcdef01234567890abcdef0123456"
+            }
+        }
+    },
+    {
+        "scope": "https://api.github.com:443",
+        "method": "PUT",
+        "path": "/repos/loopmediagroup/gally/pulls/46/merge",
+        "body": {
+            "commit_title": "[Gally]: Merged",
+            "commit_message": "",
+            "merge_method": "merge"
+        },
+        "status": 200,
+        "response": {
+            "sha": "fedcba09876543210fedcba0987654321fedcba0",
+            "merged": true,
+            "message": "Pull Request successfully merged"
+        }
+    }
+]
