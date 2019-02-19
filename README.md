@@ -78,7 +78,7 @@ Can define a custom remote if so desired.
 
 Condition is a url encoded string that is checked against the 
 [branch information](https://developer.github.com/v3/pulls/#get-a-single-pull-request). E.g. to only
-apply to prs that target a the dev branch and are open, one would use
+apply to prs that target the dev branch and are open, one would use
 
     $ ga approve <prId> --condition "base.ref=dev&state=open" 
 
