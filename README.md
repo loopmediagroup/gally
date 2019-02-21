@@ -1,6 +1,6 @@
 # Gally aka Git-Ally
 
-[![Build Status](https://img.shields.io/travis/loopmediagroup/gally/master.svg)](https://travis-ci.org/loopmediagroup/gally)
+[![Build Status](https://circleci.com/gh/loopmediagroup/gally.png?style=shield)](https://circleci.com/gh/loopmediagroup/gally)
 [![Test Coverage](https://img.shields.io/coveralls/loopmediagroup/gally/master.svg)](https://coveralls.io/github/loopmediagroup/gally?branch=master)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=loopmediagroup/gally)](https://dependabot.com)
 [![Dependencies](https://david-dm.org/loopmediagroup/gally/status.svg)](https://david-dm.org/loopmediagroup/gally)
