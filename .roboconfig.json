@@ -1,0 +1,15 @@
+{
+  "@blackflux/robo-config-plugin": {
+    "tasks": [
+      "assorted/@npm-opensource"
+    ],
+    "variables": {
+      "repoKey": "loopmediagroup/gally",
+      "packageName": "gally",
+      "projectName": "gally",
+      "owner": "simlu",
+      "ownerName": "Loop Media Group",
+      "mergeBot": "GITL-BuildBot"
+    }
+  }
+}
