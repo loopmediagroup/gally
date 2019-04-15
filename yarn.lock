@@ -175,10 +175,10 @@
   dependencies:
     smart-fs "1.6.1"
 
-"@blackflux/robo-config-plugin@1.3.3":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@blackflux/robo-config-plugin/-/robo-config-plugin-1.3.3.tgz#9c39c2f14c1f2defba922cc8cdb621c3e970f05a"
-  integrity sha512-WzWMQ5ULLnVxoZhrvJwWQ+w3RTl2bYDC/sf6sOKK4oDvb1W2lRq7k4RWfjN6xoSNbmylTOc26/a9Gys3+LfOmQ==
+"@blackflux/robo-config-plugin@1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@blackflux/robo-config-plugin/-/robo-config-plugin-1.4.1.tgz#ffd1649b7b095be59e4829cd0a9bc44fbec0e92f"
+  integrity sha512-oDXp/ltwaoiuZwzZCe0rdnMVX3MCMblr8J5sls2k62di728hG+wwgp/idbXIshs70b5dXuvAv+sjP7XrcuNPZA==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -1285,9 +1285,9 @@ compare-func@^1.3.1:
     dot-prop "^3.0.0"
 
 component-emitter@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
-  integrity sha1-E3kY1teCg/ffemt8WmPhQOaUJeY=
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
+  integrity sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
 
 concat-map@0.0.1:
   version "0.0.1"
