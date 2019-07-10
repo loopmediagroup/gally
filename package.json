@@ -25,7 +25,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "7.5.0",
-    "@babel/core": "7.5.0",
+    "@babel/core": "7.5.4",
     "@babel/plugin-proposal-object-rest-spread": "7.5.3",
     "@babel/register": "7.4.4",
     "@blackflux/eslint-plugin-rules": "1.0.20",
@@ -95,7 +95,7 @@
     "chalk": "2.4.2",
     "inquirer": "6.4.1",
     "lodash.get": "4.4.2",
-    "lodash.mergewith": "4.6.1",
+    "lodash.mergewith": "4.6.2",
     "lodash.set": "4.3.2",
     "opn": "6.0.0",
     "request": "2.88.0",
