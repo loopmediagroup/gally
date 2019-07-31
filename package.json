@@ -43,7 +43,7 @@
     "js-gardener": "2.0.56",
     "nock": "10.0.6",
     "nyc": "14.1.1",
-    "semantic-release": "15.13.18",
+    "semantic-release": "15.13.19",
     "tmp": "0.1.0"
   },
   "nyc": {
