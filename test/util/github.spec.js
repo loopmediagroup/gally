@@ -42,9 +42,9 @@ describe('Testing github', () => {
 
   before(() => {
     loggerInfo = logger.info;
-    logger.info = input => logs.push(input);
+    logger.info = (input) => logs.push(input);
     shellRun = shell.run;
-    shell.run = input => (lookup[input]);
+    shell.run = (input) => (lookup[input]);
     nockBack.setMode('record');
     nockBack.fixtures = path.join(__dirname, '__cassette');
   });

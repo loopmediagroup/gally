@@ -6,17 +6,17 @@ const gitBranch = require('./git/branch');
 const githubBranch = require('./github/branch');
 const githubPr = require('./github/pr');
 
-const getToken = config => get(config, 'credentials.github.token', process.env.GH_TOKEN);
+const getToken = (config) => get(config, 'credentials.github.token', process.env.GH_TOKEN);
 
 const getRepoKey = async (config, remote = undefined) => {
   const remoteUrl = remote ? await git.getRemoteUrl(remote) : get(config, 'config.local.repository.url');
   return remoteUrl.slice(0, -4).split('/').slice(-2).join('/');
 };
 
-const renderError = r => `${r.statusCode}: ${[
+const renderError = (r) => `${r.statusCode}: ${[
   get(r, 'body.message'),
   get(r, 'body.errors')
-].filter(e => !!e).join('\n')}`;
+].filter((e) => !!e).join('\n')}`;
 
 const promoteBranch = async (config, remote, branch) => {
   const repoKey = await getRepoKey(config, remote);
@@ -85,16 +85,16 @@ const evaluate = async (config, remote = undefined) => {
   }
 
   // handle missing branches
-  const toCreate = branchInfo.missing.filter(b => get(config.config.local.branches[b], 'create', false));
+  const toCreate = branchInfo.missing.filter((b) => get(config.config.local.branches[b], 'create', false));
   if (toCreate.length !== 0) {
     logger.info(`Creating Branches: ${chalk.green(toCreate.join(', '))}`);
     const result = await Promise
-      .all(toCreate.map(b => githubBranch.create(b, repoKey, getToken(config))));
-    if (result.every(e => e === true)) {
+      .all(toCreate.map((b) => githubBranch.create(b, repoKey, getToken(config))));
+    if (result.every((e) => e === true)) {
       logger.info(chalk.green('ok'));
       // update branchInfo
       branchInfo.matched.push(...toCreate);
-      toCreate.forEach(b => branchInfo.missing.splice(branchInfo.missing.indexOf(b), 1));
+      toCreate.forEach((b) => branchInfo.missing.splice(branchInfo.missing.indexOf(b), 1));
     } else {
       throw new Error('Failed to create Branch!');
     }
@@ -108,16 +108,16 @@ const evaluate = async (config, remote = undefined) => {
         : config.config.local.protection[config.config.local.branches[cur].protection]
     }), {});
   logger.info(`Synchronizing Branches: ${Object.keys(toSync)
-    .map(e => (config.config.local.branches[e].protection === null
+    .map((e) => (config.config.local.branches[e].protection === null
       ? `${e} [${chalk.red('unprotected')}]`
       : `${e} [${chalk.green('protected')}]`))
     .join(', ')}`);
-  const result = await Promise.all(Object.keys(toSync).map(b => githubBranch
+  const result = await Promise.all(Object.keys(toSync).map((b) => githubBranch
     .updateProtection(b, toSync[b], repoKey, getToken(config))));
-  if (result.every(e => e === true)) {
+  if (result.every((e) => e === true)) {
     logger.info(chalk.green('ok'));
   } else {
-    const details = result.filter(e => e !== true).map(e => JSON.stringify(e, null, 2)).join('\n');
+    const details = result.filter((e) => e !== true).map((e) => JSON.stringify(e, null, 2)).join('\n');
     throw new Error(`Failed to sync Branch: ${details}`);
   }
   return {};
