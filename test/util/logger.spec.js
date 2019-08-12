@@ -9,7 +9,7 @@ describe('Testing logger.js', () => {
     // eslint-disable-next-line no-console
     consoleWarn = console.warn;
     // eslint-disable-next-line no-console
-    console.warn = input => logs.push(input);
+    console.warn = (input) => logs.push(input);
   });
 
   after(() => {

@@ -3,4 +3,4 @@ module.exports.isCI = () => [
   'CONTINUOUS_INTEGRATION',
   'BUILD_NUMBER',
   'TRAVIS'
-].some(v => process.env[v] !== undefined);
+].some((v) => process.env[v] !== undefined);

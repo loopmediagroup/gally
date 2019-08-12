@@ -4,7 +4,7 @@ const crypto = require('crypto');
 const cache = {};
 
 const flushCache = () => {
-  Object.keys(cache).forEach(e => delete cache[e]);
+  Object.keys(cache).forEach((e) => delete cache[e]);
 };
 
 const ghRequest = async (method, uri, token, body, cached) => {

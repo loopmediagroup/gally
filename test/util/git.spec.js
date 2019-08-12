@@ -8,7 +8,7 @@ describe('Testing git.js', () => {
 
   before(() => {
     shellRun = shell.run;
-    shell.run = input => (lookup[input]);
+    shell.run = (input) => (lookup[input]);
   });
 
   after(() => {

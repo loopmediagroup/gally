@@ -6,7 +6,7 @@ const list = async (repoKey, token) => {
     token,
     { cached: true }
   );
-  return result.body.map(e => e.name);
+  return result.body.map((e) => e.name);
 };
 module.exports.list = list;
 

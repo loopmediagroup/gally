@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const load = file => JSON.parse(fs.readFileSync(file, 'utf8'));
+const load = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 module.exports.load = load;
 
 const loadOrDefault = (file, defaultResponse = {}) => (fs.existsSync(file) ? load(file) : defaultResponse);
