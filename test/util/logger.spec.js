@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const logger = require('./../../src/util/logger');
+const logger = require('../../src/util/logger');
 
 describe('Testing logger.js', () => {
   let consoleWarn;

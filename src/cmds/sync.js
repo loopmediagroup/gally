@@ -1,6 +1,6 @@
 const os = require('os');
-const gally = require('./../gally');
-const github = require('./../util/github');
+const gally = require('../gally');
+const github = require('../util/github');
 
 exports.command = 'sync [remote]';
 exports.desc = 'Apply local configuration to remote github repo.';

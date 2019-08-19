@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const shell = require('./../../src/util/shell');
+const shell = require('../../src/util/shell');
 
 describe('Testing shell.js', () => {
   it('Testing Resolve', (done) => {

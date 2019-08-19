@@ -1,8 +1,8 @@
 const expect = require('chai').expect;
-const open = require('./../../src/util/open');
-const pr = require('./../../src/cmds/pr');
-const gally = require('./../../src/gally');
-const git = require('./../../src/util/git');
+const open = require('../../src/util/open');
+const pr = require('../../src/cmds/pr');
+const gally = require('../../src/gally');
+const git = require('../../src/util/git');
 
 describe('Testing `pr [branch]`', () => {
   let gallyLoad;

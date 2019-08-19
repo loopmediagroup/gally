@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const branches = require('./../../../src/util/git/branch');
+const branches = require('../../../src/util/git/branch');
 
 const check = (configBranches, remoteBranches, expected) => {
   expect(branches.evaluate(configBranches, remoteBranches)).to.deep.equal(expected);

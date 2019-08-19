@@ -1,8 +1,8 @@
 const path = require('path');
 const expect = require('chai').expect;
 const nockBack = require('nock').back;
-const branch = require('./../../../src/util/github/branch');
-const request = require('./../../../src/util/github/request');
+const branch = require('../../../src/util/github/branch');
+const request = require('../../../src/util/github/request');
 
 describe('Testing branch', () => {
   before(() => {
