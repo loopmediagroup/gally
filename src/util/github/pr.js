@@ -1,6 +1,6 @@
 const querystring = require('querystring');
 const get = require('lodash.get');
-const request = require('./../github/request');
+const request = require('./request');
 
 const create = (source, target, repoKey, token) => request.post(
   `https://api.github.com/repos/${repoKey}/pulls`,

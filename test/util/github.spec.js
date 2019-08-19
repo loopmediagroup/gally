@@ -3,10 +3,10 @@ const set = require('lodash.set');
 const chalk = require('chalk');
 const expect = require('chai').expect;
 const nockBack = require('nock').back;
-const shell = require('./../../src/util/shell');
-const logger = require('./../../src/util/logger');
-const request = require('./../../src/util/github/request');
-const github = require('./../../src/util/github');
+const shell = require('../../src/util/shell');
+const logger = require('../../src/util/logger');
+const request = require('../../src/util/github/request');
+const github = require('../../src/util/github');
 
 const configTemplate = {
   config: {

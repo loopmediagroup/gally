@@ -1,7 +1,7 @@
 const os = require('os');
-const github = require('./../util/github');
-const gally = require('./../gally');
-const logger = require('./../util/logger');
+const github = require('../util/github');
+const gally = require('../gally');
+const logger = require('../util/logger');
 
 exports.command = 'merge [remote] <prId> [condition]';
 exports.desc = 'Marge pr.';

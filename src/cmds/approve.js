@@ -1,7 +1,7 @@
 const os = require('os');
-const github = require('./../util/github');
-const gally = require('./../gally');
-const logger = require('./../util/logger');
+const github = require('../util/github');
+const gally = require('../gally');
+const logger = require('../util/logger');
 
 exports.command = 'approve [remote] <prId> [condition]';
 exports.desc = 'Approve pr.';

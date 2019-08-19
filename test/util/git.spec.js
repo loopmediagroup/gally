@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
-const shell = require('./../../src/util/shell');
-const git = require('./../../src/util/git');
+const shell = require('../../src/util/shell');
+const git = require('../../src/util/git');
 
 describe('Testing git.js', () => {
   let shellRun;

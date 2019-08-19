@@ -1,8 +1,8 @@
 const expect = require('chai').expect;
-const github = require('./../../src/util/github');
-const merge = require('./../../src/cmds/merge');
-const gally = require('./../../src/gally');
-const logger = require('./../../src/util/logger');
+const github = require('../../src/util/github');
+const merge = require('../../src/cmds/merge');
+const gally = require('../../src/gally');
+const logger = require('../../src/util/logger');
 
 describe('Testing `merge <prId>`', () => {
   let gallyLoad;

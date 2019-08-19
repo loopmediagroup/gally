@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const expect = require('chai').expect;
 const tmp = require('tmp');
-const init = require('./../../src/cmds/init');
+const init = require('../../src/cmds/init');
 
 tmp.setGracefulCleanup();
 
