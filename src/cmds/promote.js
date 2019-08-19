@@ -1,7 +1,7 @@
 const os = require('os');
-const github = require('./../util/github');
-const gally = require('./../gally');
-const logger = require('./../util/logger');
+const github = require('../util/github');
+const gally = require('../gally');
+const logger = require('../util/logger');
 
 exports.command = 'promote [remote] <branch>';
 exports.desc = 'Open pr URL from provided to configured "upstream" branch';

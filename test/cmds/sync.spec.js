@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
-const sync = require('./../../src/cmds/sync');
-const gally = require('./../../src/gally');
-const github = require('./../../src/util/github');
+const sync = require('../../src/cmds/sync');
+const gally = require('../../src/gally');
+const github = require('../../src/util/github');
 
 describe('Testing `sync <remote>`', () => {
   let gallyLoad;

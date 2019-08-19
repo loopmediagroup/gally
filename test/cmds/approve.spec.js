@@ -1,8 +1,8 @@
 const expect = require('chai').expect;
-const github = require('./../../src/util/github');
-const approve = require('./../../src/cmds/approve');
-const gally = require('./../../src/gally');
-const logger = require('./../../src/util/logger');
+const github = require('../../src/util/github');
+const approve = require('../../src/cmds/approve');
+const gally = require('../../src/gally');
+const logger = require('../../src/util/logger');
 
 describe('Testing `approve <prId>`', () => {
   let gallyLoad;

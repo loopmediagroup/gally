@@ -3,8 +3,8 @@ const path = require('path');
 const expect = require('chai').expect;
 const inquirer = require('inquirer');
 const tmp = require('tmp');
-const ci = require('./../src/util/ci');
-const gally = require('./../src/gally');
+const ci = require('../src/util/ci');
+const gally = require('../src/gally');
 
 const isCiOriginal = ci.isCI;
 
