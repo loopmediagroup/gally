@@ -1,10 +1,11 @@
 const path = require('path');
 const expect = require('chai').expect;
+const { describe } = require('node-tdd');
 const nockBack = require('nock').back;
 const branch = require('../../../src/util/github/branch');
 const request = require('../../../src/util/github/request');
 
-describe('Testing branch', () => {
+describe('Testing branch', { timeout: 60000 }, () => {
   before(() => {
     nockBack.setMode('record');
     nockBack.fixtures = path.join(__dirname, '__cassette');
@@ -22,7 +23,7 @@ describe('Testing branch', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 
   it('Testing updateProtection (create)', (done) => {
     nockBack('branch-updateProtection-create.json', {}, (nockDone) => {
@@ -51,7 +52,7 @@ describe('Testing branch', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 
   it('Testing updateProtection (delete)', (done) => {
     nockBack('branch-updateProtection-delete.json', {}, (nockDone) => {
@@ -61,7 +62,7 @@ describe('Testing branch', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 
   it('Testing list', (done) => {
     nockBack('branch-list.json', {}, (nockDone) => {
@@ -71,5 +72,5 @@ describe('Testing branch', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 });

@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const expect = require('chai').expect;
+const { describe } = require('node-tdd');
 const tmp = require('tmp');
 const init = require('../../src/cmds/init');
 
