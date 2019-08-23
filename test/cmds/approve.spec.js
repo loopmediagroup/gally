@@ -1,4 +1,5 @@
 const expect = require('chai').expect;
+const { describe } = require('node-tdd');
 const github = require('../../src/util/github');
 const approve = require('../../src/cmds/approve');
 const gally = require('../../src/gally');

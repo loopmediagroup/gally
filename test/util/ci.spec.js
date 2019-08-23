@@ -1,4 +1,5 @@
 const expect = require('chai').expect;
+const { describe } = require('node-tdd');
 const ci = require('../../src/util/ci');
 
 describe('Testing ci.js', () => {

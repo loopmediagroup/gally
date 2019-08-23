@@ -1,4 +1,5 @@
 const expect = require('chai').expect;
+const { describe } = require('node-tdd');
 const logger = require('../../src/util/logger');
 
 describe('Testing logger.js', () => {
