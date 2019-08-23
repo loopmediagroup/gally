@@ -1,9 +1,10 @@
 const path = require('path');
 const expect = require('chai').expect;
+const { describe } = require('node-tdd');
 const nockBack = require('nock').back;
 const request = require('../../../src/util/github/request');
 
-describe('Testing request', () => {
+describe('Testing request', { timeout: 60000 }, () => {
   before(() => {
     nockBack.setMode('record');
     nockBack.fixtures = path.join(__dirname, '__cassette');
@@ -28,5 +29,5 @@ describe('Testing request', () => {
         }).catch(done.fail);
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 });

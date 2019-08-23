@@ -1,4 +1,5 @@
 const expect = require('chai').expect;
+const { describe } = require('node-tdd');
 const open = require('../../src/util/open');
 const pr = require('../../src/cmds/pr');
 const gally = require('../../src/gally');

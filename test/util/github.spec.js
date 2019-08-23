@@ -2,6 +2,7 @@ const path = require('path');
 const set = require('lodash.set');
 const chalk = require('chalk');
 const expect = require('chai').expect;
+const { describe } = require('node-tdd');
 const nockBack = require('nock').back;
 const shell = require('../../src/util/shell');
 const logger = require('../../src/util/logger');
@@ -34,7 +35,7 @@ const configTemplate = {
   credentials: { github: { token: '--secret-token--' } }
 };
 
-describe('Testing github', () => {
+describe('Testing github', { timeout: 60000 }, () => {
   const logs = [];
   let loggerInfo;
   let lookup = {};
@@ -74,7 +75,7 @@ describe('Testing github', () => {
         done();
       });
     });
-  }).timeout(60000);
+  });
 
   it('Testing evaluate (incorrect default branch)', (done) => {
     nockBack('github-evaluate-incorrect-default-branch.json', {}, (nockDone) => {
@@ -93,7 +94,7 @@ describe('Testing github', () => {
         done();
       });
     });
-  }).timeout(60000);
+  });
 
   it('Testing evaluate (unexpected branch)', (done) => {
     nockBack('github-evaluate-unexpected-branch.json', {}, (nockDone) => {
@@ -113,7 +114,7 @@ describe('Testing github', () => {
         done();
       });
     });
-  }).timeout(60000);
+  });
 
   it('Testing evaluate (create failure)', (done) => {
     nockBack('github-evaluate-create-failure.json', {}, (nockDone) => {
@@ -124,7 +125,7 @@ describe('Testing github', () => {
         done();
       });
     });
-  }).timeout(60000);
+  });
 
   it('Testing evaluate (sync failure)', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
@@ -139,7 +140,7 @@ describe('Testing github', () => {
         done();
       });
     });
-  }).timeout(60000);
+  });
 
   it('Testing evaluate (create and sync)', (done) => {
     nockBack('github-evaluate-create-and-sync.json', {}, (nockDone) => {
@@ -155,7 +156,7 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 
   it('Testing evaluate (sync only)', (done) => {
     nockBack('github-evaluate-sync-only.json', {}, (nockDone) => {
@@ -169,7 +170,7 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 
   it('Testing evaluate (sync only unprotected)', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
@@ -185,7 +186,7 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 
   it('Testing promoteBranch Pr Created', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
@@ -197,7 +198,7 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 
   it('Testing promoteBranch Missing Upstream', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
@@ -218,7 +219,7 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 
   it('Testing promoteBranch 401 Error', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
@@ -230,7 +231,7 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 
   it('Testing approvePr 401 Error', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
@@ -242,7 +243,7 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 
   it('Testing mergePr 401 Error', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
@@ -254,7 +255,7 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 
   it('Testing approvePr condition mismatch', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
@@ -266,7 +267,7 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 
   it('Testing mergePr condition mismatch', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
@@ -278,7 +279,7 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 
   it('Testing approvePr ok', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
@@ -290,7 +291,7 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 
   it('Testing mergePr ok', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
@@ -302,7 +303,7 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 
   it('Testing approvePr denied', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
@@ -314,7 +315,7 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 
   it('Testing mergePr denied', (done) => {
     const config = JSON.parse(JSON.stringify(configTemplate));
@@ -326,5 +327,5 @@ describe('Testing github', () => {
         done();
       }).catch(done.fail);
     });
-  }).timeout(60000);
+  });
 });
