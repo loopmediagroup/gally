@@ -24,8 +24,11 @@ module.exports.ghPrUrl = async (config, branch) => {
   const origin = await getRemoteUrl(await getRemoteOrBestGuess('origin', 'upstream'));
 
   const sourceBranch = await getCurrentBranch();
+  const upstreamUrl = upstream
+    .replace('ssh://git', 'https://')
+    .slice(0, -4);
 
-  const target = `${upstream.slice(0, -4)}/compare/${branch || get(config, 'config.local.contribBranch', 'dev')}`;
+  const target = `${upstreamUrl}/compare/${branch || get(config, 'config.local.contribBranch', 'dev')}`;
   const source = `${origin.split('/').slice(-2, -1)[0]}:${sourceBranch}`;
 
   return `${target}...${source}?expand=1`;
