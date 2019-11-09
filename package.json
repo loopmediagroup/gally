@@ -105,7 +105,7 @@
     "lib"
   ],
   "dependencies": {
-    "chalk": "2.4.2",
+    "chalk": "3.0.0",
     "inquirer": "7.0.0",
     "lodash.get": "4.4.2",
     "lodash.mergewith": "4.6.2",
