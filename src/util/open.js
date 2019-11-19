@@ -1,3 +1,3 @@
-const opn = require('opn');
+const open = require('open');
 
-module.exports.url = opn;
+module.exports.url = open;
