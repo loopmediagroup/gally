@@ -172,17 +172,17 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@blackflux/eslint-plugin-rules@1.3.15":
-  version "1.3.15"
-  resolved "https://registry.yarnpkg.com/@blackflux/eslint-plugin-rules/-/eslint-plugin-rules-1.3.15.tgz#3c70e85f3a16139b475fe3dd28def52f29780b36"
-  integrity sha512-L8+iF+hwIneYGyrLOS95NqJ1TaaYtMxY4zyiO0o5tsLoXCPNUDNZK3ut0IghmLuYgYShzoUZ9RH5JZghLw4IFg==
+"@blackflux/eslint-plugin-rules@1.3.16":
+  version "1.3.16"
+  resolved "https://registry.yarnpkg.com/@blackflux/eslint-plugin-rules/-/eslint-plugin-rules-1.3.16.tgz#51806086b35c0e21368d31a818c59c5ec72f3ecb"
+  integrity sha512-X7EqucFoi/Ig7gE9FN1NyxG0BrNuohPO5DM1skBy3ORuDb7+yhhFC+yoMY+gWAbzaDo6ODrRPasYRLTm9OSXWg==
   dependencies:
     smart-fs "1.11.0"
 
-"@blackflux/robo-config-plugin@2.6.17":
-  version "2.6.17"
-  resolved "https://registry.yarnpkg.com/@blackflux/robo-config-plugin/-/robo-config-plugin-2.6.17.tgz#23bce5b63f2d93fdf1fdbc71475d9f1a18f5b20a"
-  integrity sha512-Ys7aZlJawUxsOFonSk7u4oDa3ReiX1VYGNJAnqE857jRt9j2Ayj2f4PzwTUC0l5ZrdD331VwI+O5bwUAPjjAqA==
+"@blackflux/robo-config-plugin@2.6.18":
+  version "2.6.18"
+  resolved "https://registry.yarnpkg.com/@blackflux/robo-config-plugin/-/robo-config-plugin-2.6.18.tgz#75d4d78995772ee730a86c0362cf71dc41d8c534"
+  integrity sha512-uHvZJ/YHPuOc0Wip6BrIgrWIHhFGL9PJTGRGNXicotj3ayKNmer1J4S5kcgf9wqNzjEJ6X81RHskJsW67qqS/A==
 
 "@hapi/address@^2.1.2":
   version "2.1.2"
@@ -3538,10 +3538,10 @@ is-word-character@^1.0.0:
   resolved "https://registry.yarnpkg.com/is-word-character/-/is-word-character-1.0.3.tgz#264d15541cbad0ba833d3992c34e6b40873b08aa"
   integrity sha512-0wfcrFgOOOBdgRNT9H33xe6Zi6yhX/uoc4U8NBZGeQQB0ctU1dnlNTyL9JM2646bHDTpsDm1Brb3VPoCIMrd/A==
 
-is-wsl@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/is-wsl/-/is-wsl-1.1.0.tgz#1f16e4aa22b04d1336b66188a66af3c600c3a66d"
-  integrity sha1-HxbkqiKwTRM2tmGIpmrzxgDDpm0=
+is-wsl@^2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/is-wsl/-/is-wsl-2.1.1.tgz#4a1c152d429df3d441669498e2486d3596ebaf1d"
+  integrity sha512-umZHcSrwlDHo2TGMXv0DZ8dIUGunZ2Iv68YZnrmCiBPkZ4aaOhtv7pXJKeki9k3qJ3RJr0cDyitcl5wEH3AYog==
 
 isarray@0.0.1:
   version "0.0.1"
@@ -3655,15 +3655,22 @@ joi-strict@1.1.7:
   dependencies:
     "@hapi/joi" "16.1.7"
 
-js-gardener@2.0.114:
-  version "2.0.114"
-  resolved "https://registry.yarnpkg.com/js-gardener/-/js-gardener-2.0.114.tgz#d5bee26a4840794ddc3455cc41af7886976ad3fd"
-  integrity sha512-fgBwEepiJgwT5wR1B2llsvhWeeCiPaY4/o5oLYoJ+pOjgOdy2hi5V9xaRYimzg2yDHSdy1Zu1nFWJBdlZzN7xg==
+joi-strict@1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/joi-strict/-/joi-strict-1.1.8.tgz#68e3b8b55a70437438f31ffccd3c83a43f39688f"
+  integrity sha512-shYn0h5fzXN3JDMZSlzc4m+vGdnNboAv2dLlQHu5eAbJoVWWhICGDbeayjMrsPjICePPvHiZwbOzNyyAakznCQ==
+  dependencies:
+    "@hapi/joi" "16.1.7"
+
+js-gardener@2.0.115:
+  version "2.0.115"
+  resolved "https://registry.yarnpkg.com/js-gardener/-/js-gardener-2.0.115.tgz#58acf55135daf02fc7649a3be8f3744e0afd6f44"
+  integrity sha512-N0x1hp+IiDydwQsv09dNUHA+Bz6DlCvIpf/igMOM9Ia2dmPfW14Q5eVxUa4getDKbmi+/R5FMVNAqiBbyWGpnQ==
   dependencies:
     chalk "3.0.0"
     fancy-log "1.3.3"
     glob "7.1.6"
-    joi-strict "1.1.7"
+    joi-strict "1.1.8"
     js-yaml "3.13.1"
     lodash.difference "4.5.0"
     lodash.get "4.4.2"
@@ -5190,17 +5197,17 @@ onetime@^5.1.0:
   dependencies:
     mimic-fn "^2.1.0"
 
+open@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/open/-/open-7.0.0.tgz#7e52999b14eb73f90f0f0807fe93897c4ae73ec9"
+  integrity sha512-K6EKzYqnwQzk+/dzJAQSBORub3xlBTxMz+ntpZpH/LyCa1o6KjXhuN+2npAaI9jaSmU3R1Q8NWf4KUWcyytGsQ==
+  dependencies:
+    is-wsl "^2.1.0"
+
 opener@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/opener/-/opener-1.5.1.tgz#6d2f0e77f1a0af0032aca716c2c1fbb8e7e8abed"
   integrity sha512-goYSy5c2UXE4Ra1xixabeVh1guIX/ZV/YokJksb6q2lubWu6UbvPQ20p542/sFIll1nl8JnCyK9oBaOcCWXwvA==
-
-opn@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/opn/-/opn-6.0.0.tgz#3c5b0db676d5f97da1233d1ed42d182bc5a27d2d"
-  integrity sha512-I9PKfIZC+e4RXZ/qr1RhgyCnGgYX0UEIlXgWnCOVACIvFgaC9rz6Won7xbdhoHrd8IIhV7YEpHjreNUNkqCGkQ==
-  dependencies:
-    is-wsl "^1.1.0"
 
 optimist@^0.6.1:
   version "0.6.1"
@@ -7749,10 +7756,10 @@ yargs@13.3.0, yargs@^13.2.2, yargs@^13.3.0:
     y18n "^4.0.0"
     yargs-parser "^13.1.1"
 
-yargs@15.0.1, yargs@^15.0.1:
-  version "15.0.1"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-15.0.1.tgz#558d03c3e5d873431d500f871168967ef673620e"
-  integrity sha512-47i2DJb+gkLpioPBdMmnvb4QkAuyz7tLes9nCgYDXEdPf05tqjCQpUELea3MfmoomS9NKAZlZEifstKIXiASMw==
+yargs@15.0.2, yargs@^15.0.1:
+  version "15.0.2"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-15.0.2.tgz#4248bf218ef050385c4f7e14ebdf425653d13bd3"
+  integrity sha512-GH/X/hYt+x5hOat4LMnCqMd8r5Cv78heOMIJn1hr7QPPBqfeC6p89Y78+WB9yGDvfpCvgasfmWLzNzEioOUD9Q==
   dependencies:
     cliui "^6.0.0"
     decamelize "^1.2.0"
