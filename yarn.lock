@@ -3699,17 +3699,10 @@ joi-strict@1.1.10:
   dependencies:
     "@hapi/joi" "16.1.8"
 
-joi-strict@1.1.9:
-  version "1.1.9"
-  resolved "https://registry.yarnpkg.com/joi-strict/-/joi-strict-1.1.9.tgz#95087451a65040bc6d0cd4c1e4e10b433abb2044"
-  integrity sha512-WjlU406m2Oit7w5YgAfn/KKo45nhkjli3dwmhjOiKSEkjes4/tD1kpq8XMAa+lw2cbeWMPPIqqhys0v6YcKGtw==
-  dependencies:
-    "@hapi/joi" "16.1.8"
-
-js-gardener@2.0.121:
-  version "2.0.121"
-  resolved "https://registry.yarnpkg.com/js-gardener/-/js-gardener-2.0.121.tgz#7fbcf225eb6f31f83f7c51141002339263542ed5"
-  integrity sha512-/VrCKNFljF4XP3AbfPlKx/HcF1Z1UhAo/fIGWFqzDCd2eWdzDsUvOPZmXrf18VcjARqLXgmwRFLs/0XXw0t2TA==
+js-gardener@2.0.122:
+  version "2.0.122"
+  resolved "https://registry.yarnpkg.com/js-gardener/-/js-gardener-2.0.122.tgz#3eb48cdb93a258f2abd905289250b9380d015b0d"
+  integrity sha512-lozmi2LXBIhdBid91ROt+zfC8Yr9Ol2xmMiKvgf7xPT0uYwVV436vzlFrDXa68E+PljkbhC5tTj1XLxOsBArXw==
   dependencies:
     chalk "3.0.0"
     fancy-log "1.3.3"
@@ -3720,7 +3713,7 @@ js-gardener@2.0.121:
     lodash.get "4.4.2"
     mocha "6.2.2"
     npm-check "5.9.0"
-    robo-config "3.4.15"
+    robo-config "3.4.16"
 
 js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
@@ -4775,16 +4768,16 @@ node-pre-gyp@^0.12.0:
     semver "^5.3.0"
     tar "^4"
 
-node-tdd@2.5.20:
-  version "2.5.20"
-  resolved "https://registry.yarnpkg.com/node-tdd/-/node-tdd-2.5.20.tgz#6b50f1623c933ce9cdcd8dec49db920b339f80a3"
-  integrity sha512-pzHzGe2wfp9g7cRnw+F/1/jxrINYrOxUUiY8om/8MqqSsQ/UJdxAkQt4oC4h0KzcT92BGFxWcNgTbf/tJ3QHdw==
+node-tdd@2.5.23:
+  version "2.5.23"
+  resolved "https://registry.yarnpkg.com/node-tdd/-/node-tdd-2.5.23.tgz#147848c0a617cb60c3e02e4d792826f14c68e158"
+  integrity sha512-EF2hbdFIKPfOrDzavTTcutyOLkZME5/P/bpSlx2vy1P6zd6veb1T5I7POg5Nfx9xzb5EKqnjlsQr2KH3XakmzQ==
   dependencies:
     callsites "3.1.0"
-    joi-strict "1.1.9"
+    joi-strict "1.1.10"
     lodash.get "4.4.2"
     nock "11.7.0"
-    smart-fs "1.11.2"
+    smart-fs "1.11.4"
     timekeeper "2.2.0"
     tmp "0.1.0"
 
@@ -5168,6 +5161,11 @@ oauth-sign@~0.9.0:
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.9.0.tgz#47a7b016baa68b5fa0ecf3dee08a85c679ac6455"
   integrity sha512-fexhUFFPTGV8ybAtSIGbV6gOkSv8UtRbDBnAyLQw4QPKkgNlsH2ByPGtMUqdWkos6YCRmAqViwgZrJc/mRDzZQ==
 
+object-align@1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/object-align/-/object-align-1.0.10.tgz#88acc804a7a8d168f0752263fff1b2503cb660d9"
+  integrity sha512-WiZLaIy3m2zsFk8yFNZCWo66bkdLRbgTBLa4MK0W/wdk6vbYia6+xIZ8QD9j98fvMhRf31QunNQUfILD6wn6HA==
+
 object-align@1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/object-align/-/object-align-1.0.9.tgz#f1b1e236cc08606d8e85062ad7eaa4234569110a"
@@ -5207,10 +5205,10 @@ object-scan@10.0.14:
   resolved "https://registry.yarnpkg.com/object-scan/-/object-scan-10.0.14.tgz#3a3c6bfcd8136c3f67fc5b9dc476f070370c4594"
   integrity sha512-cJgtbUlroRrDk63xGk7I1q01cI4Hn4/J0u0/BSwICPTQgHwz8vpZ/ZlXp/tOMAGwt6tlrBUUrzmel91OAe4VoQ==
 
-object-treeify@1.1.21:
-  version "1.1.21"
-  resolved "https://registry.yarnpkg.com/object-treeify/-/object-treeify-1.1.21.tgz#75f183db58ab7558a1364903deaa0d712ba7e2d8"
-  integrity sha512-PrX7b2UOMgkSVIV9gH/v3bMEITIRHNhGhWOaexeP1lHB4VwYSPB2urb9ZSl1391T2fECupPZrtpD1pNotK5e0A==
+object-treeify@1.1.22:
+  version "1.1.22"
+  resolved "https://registry.yarnpkg.com/object-treeify/-/object-treeify-1.1.22.tgz#22177746259a6004b09871be95a38de9d7c3ce0b"
+  integrity sha512-RNP1vMECiA9j5rd+GNtdph3cKBP9qEtCXrNtRccbtoC37PRHJNV1Mj8rJ5YqGRuzXB2HoWfrKn46Z89CtJNekw==
 
 object-visit@^1.0.0:
   version "1.0.1"
@@ -6378,10 +6376,10 @@ rimraf@2.6.3:
   dependencies:
     glob "^7.1.3"
 
-robo-config@3.4.15:
-  version "3.4.15"
-  resolved "https://registry.yarnpkg.com/robo-config/-/robo-config-3.4.15.tgz#50b538156e37ac26c2c5f1f313d4222b759ce398"
-  integrity sha512-WU+KhFEMWntZDKdlVuSsNMXAYK+opZy+fjUP8dxWJ+qMWaQieKANm9mKJeuDuxUZcGagDUCiTYPyxF24DI5VPw==
+robo-config@3.4.16:
+  version "3.4.16"
+  resolved "https://registry.yarnpkg.com/robo-config/-/robo-config-3.4.16.tgz#bd35f3d018d0b4377bc29f968e7ce7d3243e59be"
+  integrity sha512-src1TBxVRl19FuL2RGgG2KO5pVZJ3UzgV3XwnAsZDAk/aoqEwYAGLm4Y/RKb782beC2KE3B5KPZJVYqI/3YuSg==
   dependencies:
     app-root-path "3.0.0"
     deepmerge "4.2.2"
@@ -6391,7 +6389,7 @@ robo-config@3.4.15:
     lodash.get "4.4.2"
     object-deep-contain "1.0.21"
     object-scan "10.0.14"
-    object-treeify "1.1.21"
+    object-treeify "1.1.22"
     smart-fs "1.11.3"
 
 run-async@^0.1.0:
@@ -6607,20 +6605,6 @@ smart-buffer@^4.1.0:
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.1.0.tgz#91605c25d91652f4661ea69ccf45f1b331ca21ba"
   integrity sha512-iVICrxOzCynf/SNaBQCw34eM9jROU/s5rzIhpOvzhzuYHfJR/DhZfDkXiZSgKXfgv26HT3Yni3AV/DGw0cGnnw==
 
-smart-fs@1.11.2:
-  version "1.11.2"
-  resolved "https://registry.yarnpkg.com/smart-fs/-/smart-fs-1.11.2.tgz#e3a2c8bc103f5d1becf80def29c3bab67c5fc47b"
-  integrity sha512-hqwEn6rC6l5cehd7n7zsXe2zmcpHRk2r+QfmEzf/yIlzA+eM0Qtrk/R/Rz5KvHQgefqMOo+vkDntGII+tHli1g==
-  dependencies:
-    fs-extra "8.1.0"
-    js-yaml "3.13.1"
-    json-stringify-pretty-compact "2.0.0"
-    lodash.clonedeep "4.5.0"
-    lodash.isequal "4.5.0"
-    object-align "1.0.9"
-    xml-js "1.6.11"
-    yaml-boost "1.9.18"
-
 smart-fs@1.11.3:
   version "1.11.3"
   resolved "https://registry.yarnpkg.com/smart-fs/-/smart-fs-1.11.3.tgz#3ee2bf591eaf49df9b8c4607cd7edf1e723a677e"
@@ -6632,6 +6616,20 @@ smart-fs@1.11.3:
     lodash.clonedeep "4.5.0"
     lodash.isequal "4.5.0"
     object-align "1.0.9"
+    xml-js "1.6.11"
+    yaml-boost "1.9.18"
+
+smart-fs@1.11.4:
+  version "1.11.4"
+  resolved "https://registry.yarnpkg.com/smart-fs/-/smart-fs-1.11.4.tgz#3b5fd216f27d3438f5e7a2e08c0b63e3c4b39d93"
+  integrity sha512-2NL60nagM+/OMTvxpfCpvHxsI2UnijPkKm+F4bn2I90dXf5dQzxUavly48W3y9iXdO/2XopjqdnybUorbMB+JA==
+  dependencies:
+    fs-extra "8.1.0"
+    js-yaml "3.13.1"
+    json-stringify-pretty-compact "2.0.0"
+    lodash.clonedeep "4.5.0"
+    lodash.isequal "4.5.0"
+    object-align "1.0.10"
     xml-js "1.6.11"
     yaml-boost "1.9.18"
 
