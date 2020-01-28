@@ -50,7 +50,7 @@
     "nock": "11.7.2",
     "node-tdd": "2.6.2",
     "nyc": "15.0.0",
-    "semantic-release": "16.0.3",
+    "semantic-release": "17.0.1",
     "tmp": "0.1.0"
   },
   "nyc": {
@@ -106,7 +106,7 @@
   ],
   "dependencies": {
     "chalk": "3.0.0",
-    "inquirer": "7.0.3",
+    "inquirer": "7.0.4",
     "lodash.get": "4.4.2",
     "lodash.mergewith": "4.6.2",
     "lodash.set": "4.3.2",
