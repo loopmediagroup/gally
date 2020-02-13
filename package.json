@@ -50,7 +50,7 @@
     "nock": "11.8.2",
     "node-tdd": "2.7.1",
     "nyc": "15.0.0",
-    "semantic-release": "17.0.2",
+    "semantic-release": "17.0.3",
     "tmp": "0.1.0"
   },
   "nyc": {
