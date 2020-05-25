@@ -4,7 +4,7 @@
     "package.json",
     ".npmignore",
     "LICENSE",
-    ".idea/${projectName}.iml",
+    ".idea/gally.iml",
     ".gitignore",
     ".editorconfig",
     ".gally.json",
