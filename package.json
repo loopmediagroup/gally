@@ -110,7 +110,7 @@
     "lodash.get": "4.4.2",
     "lodash.mergewith": "4.6.2",
     "lodash.set": "4.3.2",
-    "open": "7.0.4",
+    "open": "7.1.0",
     "request": "2.88.2",
     "request-promise-native": "1.0.8",
     "yargs": "15.4.1"
