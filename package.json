@@ -25,18 +25,19 @@
     "tsv": "yarn run test-simple --verbose",
     "docker": "docker run --net host -u`id -u`:`id -g` -v $(pwd):/user/project -v ~/.aws:/user/.aws -v ~/.npmrc:/user/.npmrc -w /user/project -it --entrypoint /bin/bash",
     "u": "yarn upgrade --latest --force",
-    "i": "yarn install --frozen-lockfile"
+    "i": "yarn install --frozen-lockfile",
+    "it": "yarn run i && yarn run t"
   },
   "author": "Loop Media Group",
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "7.10.5",
-    "@babel/core": "7.11.1",
-    "@babel/plugin-proposal-object-rest-spread": "7.11.0",
+    "@babel/core": "7.11.4",
     "@babel/register": "7.10.5",
     "@blackflux/eslint-plugin-rules": "1.3.33",
-    "@blackflux/robo-config-plugin": "3.9.5",
+    "@blackflux/robo-config-plugin": "3.9.9",
     "babel-eslint": "10.1.0",
+    "babel-preset-latest-node": "4.1.0",
     "chai": "4.2.0",
     "coveralls": "3.1.0",
     "eslint": "7.7.0",
@@ -46,7 +47,7 @@
     "eslint-plugin-json": "2.1.2",
     "eslint-plugin-markdown": "1.0.2",
     "eslint-plugin-mocha": "8.0.0",
-    "js-gardener": "2.0.166",
+    "js-gardener": "2.0.167",
     "nock": "13.0.4",
     "node-tdd": "2.18.3",
     "nyc": "15.1.0",
@@ -92,7 +93,7 @@
   "keywords": [],
   "homepage": "https://github.com/loopmediagroup/gally#readme",
   "engines": {
-    "node": ">= 8.10"
+    "node": ">= 10"
   },
   "repository": {
     "type": "git",
@@ -110,7 +111,7 @@
     "lodash.get": "4.4.2",
     "lodash.mergewith": "4.6.2",
     "lodash.set": "4.3.2",
-    "open": "7.1.0",
+    "open": "7.2.0",
     "request": "2.88.2",
     "request-promise-native": "1.0.9",
     "yargs": "15.4.1"
