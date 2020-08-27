@@ -4,6 +4,7 @@
       "assorted/@npm-opensource"
     ],
     "variables": {
+      "nodeVersion": "10",
       "repoKey": "loopmediagroup/gally",
       "packageName": "gally",
       "projectName": "gally",
