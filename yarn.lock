@@ -5146,10 +5146,10 @@ node-sass-tilde-importer@^1.0.2:
   dependencies:
     find-parent-dir "^0.3.0"
 
-node-tdd@3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/node-tdd/-/node-tdd-3.0.3.tgz#73b1443bfeff15bfbed831a9932b89a80cc4a18f"
-  integrity sha512-VTZElkIwnR/IzzUdySp5k9QS8OKkKMdIo5XM9P1CCWLkj7+HL+brN25xwQHG7iI6KcKhxR5iRDesp7UFXD9L+g==
+node-tdd@3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/node-tdd/-/node-tdd-3.0.4.tgz#d7a92787c98816a7b3702fdc18986a14c7b85002"
+  integrity sha512-5fxclyW/rQ/LzSa4o4uawNYzPKfmXLl50XB5MgweX69dld0F71fnlhVTc9ppABPjVkLorwsmhJ8W0YMSy7IbRg==
   dependencies:
     callsites "3.1.0"
     joi-strict "2.0.0"
@@ -5158,7 +5158,7 @@ node-tdd@3.0.3:
     minimist "1.2.5"
     nock "13.0.11"
     object-scan "14.0.0"
-    smart-fs "2.0.1"
+    smart-fs "2.0.2"
     timekeeper "2.2.0"
     tmp "0.2.1"
     uuid "8.3.0"
@@ -5560,6 +5560,13 @@ object-lib@2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/object-lib/-/object-lib-2.1.2.tgz#d427c0b594825ef996c2975546f46a921e73e119"
   integrity sha512-3ont7R1yb+HxwCENdllpuIVTOul6OpK/Z5cxFImVkrBigQmDLG9ltTjmjnpBQUJkO2b4cBV06JyzfnQHYud2Jg==
+  dependencies:
+    object-scan "14.0.0"
+
+object-lib@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/object-lib/-/object-lib-3.0.0.tgz#630e437ef876f57d0483e54b485894ab37aca23e"
+  integrity sha512-CIlney6fXVZDlFcvRJVG4Bfemb5yceKjuSpv85Frm+SynKFPLNQGlFCRxYNlCrWnlhKdCs4MUei8ZA/cESczBA==
   dependencies:
     object-scan "14.0.0"
 
@@ -7024,6 +7031,20 @@ smart-fs@2.0.1:
     lodash.clonedeep "4.5.0"
     lodash.isequal "4.5.0"
     object-lib "2.1.2"
+    xml-js "1.6.11"
+    yaml-boost "2.0.0"
+
+smart-fs@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/smart-fs/-/smart-fs-2.0.2.tgz#684814a9137efea10bc7d4ff437a2bad6cc9ac79"
+  integrity sha512-BQSuFSArvimIV6tEOMKTOu7ZVKq/SUcuuTO27cquPKzbA8fFZKOabZUq1JpMoh24SBfxXxncEwvmgZIwHZZLuA==
+  dependencies:
+    fs-extra "9.1.0"
+    js-yaml "4.0.0"
+    json-stringify-pretty-compact "3.0.0"
+    lodash.clonedeep "4.5.0"
+    lodash.isequal "4.5.0"
+    object-lib "3.0.0"
     xml-js "1.6.11"
     yaml-boost "2.0.0"
 
