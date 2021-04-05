@@ -45,7 +45,7 @@
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jasmine": "4.1.2",
     "eslint-plugin-json": "2.1.2",
-    "eslint-plugin-markdown": "2.0.0",
+    "eslint-plugin-markdown": "2.0.1",
     "eslint-plugin-mocha": "8.1.0",
     "js-gardener": "3.0.3",
     "nock": "13.0.11",
@@ -111,7 +111,7 @@
     "lodash.get": "4.4.2",
     "lodash.mergewith": "4.6.2",
     "lodash.set": "4.3.2",
-    "open": "8.0.4",
+    "open": "8.0.5",
     "request": "2.88.2",
     "request-promise-native": "1.0.9",
     "yargs": "16.2.0"
