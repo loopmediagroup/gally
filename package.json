@@ -40,7 +40,7 @@
     "babel-preset-latest-node": "5.5.1",
     "chai": "4.3.4",
     "coveralls": "3.1.0",
-    "eslint": "7.26.0",
+    "eslint": "7.27.0",
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-plugin-import": "2.23.3",
     "eslint-plugin-jasmine": "4.1.2",
@@ -107,11 +107,11 @@
   ],
   "dependencies": {
     "chalk": "4.1.1",
-    "inquirer": "8.0.1",
+    "inquirer": "8.1.0",
     "lodash.get": "4.4.2",
     "lodash.mergewith": "4.6.2",
     "lodash.set": "4.3.2",
-    "open": "8.0.9",
+    "open": "8.2.0",
     "request": "2.88.2",
     "request-promise-native": "1.0.9",
     "yargs": "17.0.1"
